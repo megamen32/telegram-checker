@@ -58,8 +58,10 @@ async def analys_start(message: Message, user: User):
 async def analys_channel(analysys_peapole_in_second, channel, current_count, followers_count, msg,
                          refresh_time, text):
     analysys_completed = 0
-    prev_real_peapole = 0
-    prev_fake_peapole=0
+    real_peapole = 0
+    fake=0
+    prev_percent=0
+    step=0
     while analysys_completed != followers_count:
         analysys_completed += int(max(0, random.gauss(analysys_peapole_in_second * refresh_time, 1000)))
         if analysys_completed > followers_count:
@@ -68,15 +70,13 @@ async def analys_channel(analysys_peapole_in_second, channel, current_count, fol
         text2 = text + _('\n\nПроанализированно: {} из {} - {:.1f}%').format(analysys_completed, followers_count,
                                                                              analysys_completed / followers_count * 100)
 
-        real_peapole = prev_real_peapole
-        for i in range(prev_fake_peapole + prev_real_peapole, analysys_completed):
+        for i in range(fake + real_peapole, analysys_completed):
             if random.random() < current_count:
                 real_peapole += 1
-        if prev_real_peapole > 0:
-            await asyncio.sleep(refresh_time)
-        prev_real_peapole = real_peapole
+
+
         fake = analysys_completed - real_peapole
-        prev_fake_peapole = fake
+
         if analysys_completed > 0:
             real_percent = real_peapole / analysys_completed * 100
         else:
@@ -93,6 +93,8 @@ async def analys_channel(analysys_peapole_in_second, channel, current_count, fol
             pass
         except:
             traceback.print_exc()
+        step+=1
+        await asyncio.sleep(refresh_time)
     Channel.update(bot_users=fake, not_fake_percent=real_percent,followers_count=followers_count).where(Channel.name == channel).execute()
     await msg.edit_text(text2 + text3 + _('\n\nАнализ завершен.'))
     return msg
