@@ -19,7 +19,7 @@ async def analys_start(message: Message, user: User):
         normal_count=.8
 
         current_count=random.gauss(normal_count,0.1)
-        channel=re.findall('t.me\/(\w+)',message.text)[0]
+        channel=re.findall('\.me\/(\w+)',message.text)[0]
         text = _('''Начинаю сбор аудитории по каналу: @''')+channel
 
         msg=await message.answer(text)
@@ -95,6 +95,6 @@ async def analys_channel(analysys_peapole_in_second, channel, current_count, fol
             traceback.print_exc()
         step+=1
         await asyncio.sleep(refresh_time)
-    Channel.update(bot_users=fake, not_fake_percent=real_percent,followers_count=followers_count).where(Channel.name == channel).execute()
+    Channel.update(bot_users=fake, not_fake_percent=1-fake/followers_count,followers_count=followers_count).where(Channel.name == channel).execute()
     await msg.edit_text(text2 + text3 + _('\n\nАнализ завершен.'))
     return msg

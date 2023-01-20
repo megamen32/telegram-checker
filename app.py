@@ -29,8 +29,8 @@ if __name__ == '__main__':
     from bot import filters, handlers
 
     logging.basicConfig(format=u'%(filename)s [LINE:%(lineno)d] #%(levelname)-8s [%(asctime)s]  %(message)s',
-                        #level=logging.INFO,
-                         level=logging.DEBUG,
+                        level=logging.INFO,
+                        # level=logging.DEBUG,
                         )
 
     setup_middleware(dp)
