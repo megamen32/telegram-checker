@@ -7,6 +7,7 @@ import aiogram
 from aiogram.types import Message, User, ReplyKeyboardRemove
 
 from loader import dp, _,bot
+from models.channel import Channel
 
 
 @dp.message_handler(regexp='t.me\/\w+')
@@ -19,52 +20,77 @@ async def analys_start(message: Message, user: User):
 
         current_count=random.gauss(normal_count,0.1)
         channel=re.findall('t.me\/(\w+)',message.text)[0]
-        text = _('''Начинаю сбор аудиторию по каналу: @''')+channel
+        text = _('''Начинаю сбор аудитории по каналу: @''')+channel
 
         msg=await message.answer(text)
+
+
+
         followers_count=await bot.get_chat_member_count(f"@{channel}")
-        analysys_completed=0
-        prev_real_peapole=0
-        prev_fake_peapole=0
-        while analysys_completed<=followers_count:
-            text2=text+_('\n\nПроанализированно: {} из {} - {:.1f}%').format(analysys_completed,followers_count,analysys_completed/followers_count*100)
+        db_ch: Channel = Channel.get_or_none(Channel.name == channel)
+        if db_ch is None:
+            db_ch = Channel.create(name=channel, not_fake_percent=current_count,followers_count=followers_count)
+        need_to_analys = db_ch.bot_users == 0 or db_ch.followers_count!=followers_count
+        if need_to_analys:
+            msg = await analys_channel(analysys_peapole_in_second, channel, current_count, followers_count, msg,
+                                        refresh_time, text)
+        else:
+            db_ch.followers_count=followers_count
+            text2 = text + _('\n\nПроанализированно: {} из {} - {:.1f}%').format(followers_count, followers_count,
+                                                                                 followers_count / followers_count * 100)
 
-            real_peapole=0
-            for i in range(analysys_completed):
-                if random.random()<current_count:
-                    real_peapole+=1
-            if analysys_completed-real_peapole<prev_fake_peapole:
-                real_peapole=analysys_completed-prev_fake_peapole
-
-            prev_real_peapole=real_peapole
-
-            fake=analysys_completed-real_peapole
-            prev_fake_peapole = fake
-            if analysys_completed>0:
-                real_percent = real_peapole / analysys_completed * 100
-            else:
-                real_percent=100.00
-            wait_time=(followers_count-analysys_completed)/analysys_peapole_in_second
-            text3=_('''
-    💚 Подписчики: {} ({:.0f}%)
-    ♂️ боты: {} ({:.0f}%)
-    Примерное время ожидание: {:.0f} секунд''').format(real_peapole, real_percent, fake,100-real_percent,wait_time)
-
-
-            if analysys_completed>0:
-                await asyncio.sleep(refresh_time)
-            try:
-                msg = await  msg.edit_text(text2 + text3)
-            except aiogram.utils.exceptions.MessageNotModified:pass
-            except:
-                traceback.print_exc()
-
-            analysys_completed+=int(random.gauss(analysys_peapole_in_second*refresh_time,3000))
-            if analysys_completed==followers_count:
-                break
-            if analysys_completed>followers_count:
-                analysys_completed=int(min(followers_count,analysys_completed))
-
-        await msg.edit_text(msg.text+'\n\nАнализ завершен.')
+            real_peapole = db_ch.followers_count-db_ch.bot_users
+            analysys_completed=db_ch.followers_count
+            fake = db_ch.bot_users
+            real_percent = real_peapole / analysys_completed * 100
+            text3 = _('''
+                💚 Подписчики: {} ({:.2f}%)
+                ♂️ боты: {} ({:.2f}%)''').format(real_peapole, real_percent, fake, 100 - real_percent)
+            await msg.edit_text(text2 + text3 + _('\n\nАнализ завершен.'))
+    except aiogram.exceptions.ChatNotFound:
+        await msg.edit_text(msg.text+_('\n\nChat with that name not found'))
     except:
         traceback.print_exc()
+
+
+async def analys_channel(analysys_peapole_in_second, channel, current_count, followers_count, msg,
+                         refresh_time, text):
+    analysys_completed = 0
+    prev_real_peapole = 0
+    prev_fake_peapole=0
+    while analysys_completed != followers_count:
+        analysys_completed += int(max(0, random.gauss(analysys_peapole_in_second * refresh_time, 1000)))
+        if analysys_completed > followers_count:
+            analysys_completed = int(min(followers_count, analysys_completed))
+
+        text2 = text + _('\n\nПроанализированно: {} из {} - {:.1f}%').format(analysys_completed, followers_count,
+                                                                             analysys_completed / followers_count * 100)
+
+        real_peapole = prev_real_peapole
+        for i in range(prev_fake_peapole + prev_real_peapole, analysys_completed):
+            if random.random() < current_count:
+                real_peapole += 1
+        if prev_real_peapole > 0:
+            await asyncio.sleep(refresh_time)
+        prev_real_peapole = real_peapole
+        fake = analysys_completed - real_peapole
+        prev_fake_peapole = fake
+        if analysys_completed > 0:
+            real_percent = real_peapole / analysys_completed * 100
+        else:
+            real_percent = 100.00
+        wait_time = (followers_count - analysys_completed) / analysys_peapole_in_second
+        text3 = _('''
+        💚 Подписчики: {} ({:.2f}%)
+        ♂️ боты: {} ({:.2f}%)''').format(real_peapole, real_percent, fake, 100 - real_percent)
+        text4 = _('\nПримерное время ожидание: {:.0f} секунд').format(wait_time)
+
+        try:
+            msg = await  msg.edit_text(text2 + text3 + text4)
+        except aiogram.utils.exceptions.MessageNotModified:
+            pass
+        except:
+            traceback.print_exc()
+    Channel.update(bot_users=fake, not_fake_percent=real_percent,followers_count=followers_count).where(Channel.name == channel).execute()
+    await msg.edit_text(text2 + text3 + _('\n\nАнализ завершен.'))
+    return msg

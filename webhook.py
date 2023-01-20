@@ -7,7 +7,7 @@ from bot.commands import set_default_commands
 from loader import dp, bot, config
 from utils.misc.logging import logger
 
-logging.basicConfig(level=logging.INFO)
+logging.basicConfig(level=logging.DEBUG)
 
 WEBHOOK_HOST = config.WEBHOOK_HOST
 WEBHOOK_PATH = config.WEBHOOK_PATH
@@ -21,7 +21,7 @@ async def on_startup(dispatcher: Dispatcher):
     logger.info('Bot startup')
     logger.info(f'{WEBHOOK_URL=}')
 
-    await bot.set_webhook(WEBHOOK_URL)
+    await bot.set_webhook(WEBHOOK_URL,max_connections=80)
 
     for admin_id in config.ADMINS:
         await bot.send_message(admin_id, 'Бот успешно запущен')

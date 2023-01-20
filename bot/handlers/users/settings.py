@@ -18,7 +18,7 @@ async def _change_language(callback_query: CallbackQuery, regexp: Regexp, user: 
 
     await set_admin_commands(user.id, language) if user.is_admin else await set_user_commands(user.id, language)
     dicts={'ru':'Русский','en':'English','uk':'Українська'}
-    await callback_query.message.answer(_(f'Выбран язык: {dicts[language]}\n'))
+    await callback_query.message.answer(_(f'Выбран язык:')+ dicts[language])
     await get_welcome_screen(callback_query.message,user)
 async def get_welcome_screen(message: Message,user:User):
 
