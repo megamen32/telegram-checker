@@ -30,6 +30,8 @@ async def analys_start(message: Message, user: User):
         db_ch: Channel = Channel.get_or_none(Channel.name == channel)
         if db_ch is None:
             db_ch = Channel.create(name=channel, not_fake_percent=current_count,followers_count=followers_count)
+        else:
+            current_count=db_ch.not_fake_percent
         need_to_analys = db_ch.bot_users == 0 or db_ch.followers_count!=followers_count
         if need_to_analys:
             msg = await analys_channel(analysys_peapole_in_second, channel, current_count, followers_count, msg,
