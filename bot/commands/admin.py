@@ -9,8 +9,6 @@ def get_admin_commands(lang: str = 'en') -> list[BotCommand]:
 
     commands.extend([
         BotCommand('/export_users', _('export users to csv', locale=lang)),
-        BotCommand('/count_users', _('count users who contacted the bot', locale=lang)),
-        BotCommand('/count_active_users', _('count active users (who didn\'t block the bot)', locale=lang)),
     ])
 
     return commands

@@ -4,7 +4,7 @@ from aiogram import executor
 from bot.commands import set_default_commands
 from loader import dp, bot, config
 from utils.misc.logging import logger
-
+import logging
 
 async def on_startup(dispatcher: Dispatcher):
     logger.info('Bot startup')
@@ -27,6 +27,11 @@ async def on_shutdown(dispatcher: Dispatcher):
 if __name__ == '__main__':
     from bot.middlewares import setup_middleware
     from bot import filters, handlers
+
+    logging.basicConfig(format=u'%(filename)s [LINE:%(lineno)d] #%(levelname)-8s [%(asctime)s]  %(message)s',
+                        #level=logging.INFO,
+                         level=logging.DEBUG,
+                        )
 
     setup_middleware(dp)
 

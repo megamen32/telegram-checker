@@ -17,11 +17,14 @@ async def _change_language(callback_query: CallbackQuery, regexp: Regexp, user: 
     i18n.set_user_locale(language)
 
     await set_admin_commands(user.id, language) if user.is_admin else await set_user_commands(user.id, language)
+    dicts={'ru':'Русский','en':'English','uk':'Українська'}
+    await callback_query.message.answer(_(f'Выбран язык: {dicts[language]}\n'))
+    await get_welcome_screen(callback_query.message,user)
+async def get_welcome_screen(message: Message,user:User):
 
-    await callback_query.message.answer(_('Language changed successfully\n'
-                                          'Press /help to find out how I can help you'),
-                                        reply_markup=get_default_markup(user))
-    await callback_query.message.delete()
+    text = _('''Для получения статистики канала или чата отправьте боту ссылку на него.''')
+
+    await message.answer(text)
 
 
 @dp.message_handler(i18n_text='Settings 🛠')

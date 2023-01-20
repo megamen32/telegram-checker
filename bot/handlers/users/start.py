@@ -13,10 +13,11 @@ async def _start(message: Message, user: User):
     if user.is_admin:
         await set_admin_commands(user.id, user.language)
 
-    text = _('Hi {full_name}!\n'
-             'Choose your language').format(full_name=user.name)
+    text = _('''Выберите язык / Choose language:''')
 
     await message.answer(text, reply_markup=get_language_inline_markup())
+
+
 
 
 @dp.message_handler(i18n_text='Help 🆘')
