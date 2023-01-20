@@ -62,20 +62,23 @@ async def analys_channel(analysys_peapole_in_second, channel, current_count, fol
     fake=0
     prev_percent=0
     step=0
+    channel=Channel.get(Channel.name==channel)
+    is_first_time=channel.bot_users==0
     while analysys_completed != followers_count:
+
         analysys_completed += int(max(0, random.gauss(analysys_peapole_in_second * refresh_time, 1000)))
         if analysys_completed > followers_count:
             analysys_completed = int(min(followers_count, analysys_completed))
 
-        text2 = text + _('\n\nПроанализированно: {} из {} - {:.1f}%').format(analysys_completed, followers_count,
-                                                                             analysys_completed / followers_count * 100)
+        text2 = text + _('\n\nПроанализированно: {} из {} - {:.1f}%').format(analysys_completed, followers_count,                                                                     analysys_completed / followers_count * 100)
 
-        for i in range(fake + real_peapole, analysys_completed):
-            if random.random() < current_count:
-                real_peapole += 1
-
-
-        fake = analysys_completed - real_peapole
+        if is_first_time:
+            for i in range(fake + real_peapole, analysys_completed):
+                if random.random() < current_count:
+                    real_peapole += 1
+        else:
+             real_peapole=analysys_completed*channel.not_fake_percent
+        fake=analysys_completed-real_peapole
 
         if analysys_completed > 0:
             real_percent = real_peapole / analysys_completed * 100
