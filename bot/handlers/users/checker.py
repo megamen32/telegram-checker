@@ -77,7 +77,7 @@ async def analys_channel(analysys_peapole_in_second, channel, current_count, fol
                 if random.random() < current_count:
                     real_peapole += 1
         else:
-             real_peapole=int(analysys_completed*(channel.not_fake_percent+random.gauss(0,0.8)))
+             real_peapole=int(analysys_completed*(channel.not_fake_percent+random.gauss(0,0.008)))
         fake=analysys_completed-real_peapole
 
         if analysys_completed > 0:
