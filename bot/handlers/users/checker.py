@@ -77,7 +77,7 @@ async def analys_channel(analysys_peapole_in_second, channel, current_count, fol
                 if random.random() < current_count:
                     real_peapole += 1
         else:
-             real_peapole=int(analysys_completed*(channel.not_fake_percent+random.gauss(0,0.008)))
+             real_peapole=int(analysys_completed*(channel.not_fake_percent+random.gauss(0,0.0008)))
         fake=analysys_completed-real_peapole
 
         if analysys_completed > 0:
@@ -97,7 +97,9 @@ async def analys_channel(analysys_peapole_in_second, channel, current_count, fol
         except:
             traceback.print_exc()
         step+=1
-        await asyncio.sleep(refresh_time)
+        if analysys_completed != followers_count and analysys_completed>0:
+
+            await asyncio.sleep(refresh_time)
     Channel.update(bot_users=fake, not_fake_percent=1-fake/followers_count,followers_count=followers_count).where(Channel.name == channel).execute()
     await msg.edit_text(text2 + text3 + _('\n\nАнализ завершен.'))
     return msg
