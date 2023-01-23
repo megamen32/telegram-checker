@@ -29,7 +29,7 @@ async def analys_start(message: Message, user: User):
         followers_count=await bot.get_chat_member_count(f"@{channel}")
         db_ch: Channel = Channel.get_or_none(Channel.name == channel)
         if db_ch is None:
-            db_ch = Channel.create(name=channel, not_fake_percent=current_count,followers_count=followers_count,online_percent=random.gauss(0.05,0.01),recent_percent=random.gauss(0.06,0.1))
+            db_ch = Channel.create(name=channel, not_fake_percent=current_count,followers_count=followers_count,online_percent=random.gauss(0.05,0.01),recent_percent=random.gauss(0.6,0.1))
         else:
             current_count=db_ch.not_fake_percent
         need_to_analys = db_ch.bot_users == 0 or db_ch.followers_count!=followers_count
@@ -85,21 +85,31 @@ async def analys_channel(analysys_peapole_in_second, channel, current_count, fol
         else:
             real_percent = 100.00
         wait_time = (followers_count - analysys_completed) / analysys_peapole_in_second
-        online_count=real_peapole*channel.online_percent
-        one_three_days=real_peapole*channel.recent_percent
-        week_to_month=real_peapole-one_three_days-more_than_month
-        more_than_month=fake
+        online_count=int(real_peapole*channel.online_percent)
+
+        one_three_days=int(real_peapole*channel.recent_percent)
+        more_than_month=-1
+        while more_than_month<1:
+            three_to_week=int(random.gauss(0.2,0.005)*real_peapole)
+            week_to_month=int(random.gauss(0.1,0.005)*real_peapole)
+            more_than_month=real_peapole-one_three_days-three_to_week-week_to_month
 
 
 
         text3 = _('''
-        💚 Подписчики: {} ({:.2f}%)
+        👥 Подписчики: {} ({:.2f}%)
         ♂️ боты: {} ({:.2f}%)''').format(real_peapole, real_percent, fake, 100 - real_percent)
-        text4=_('''👥 Подписчики которые заходили в последний раз:
-🕕 от 1 секунды до 2-3 дней назад: {} ({})
-🕐 от 2-3 дней до месяца назад: {} ({})
-🕒 больше месяца назад: {} (3.53%)
-''').format(online_count,online_count/analysys_completed*100,one_three_days,one_three_days/analysys_completed*100,week_to_month,week_to_month/analysys_completed*100,more_than_month,more_than_month/analysys_completed*100)
+        text4=_('''\n\n📢Онлайн: {} ({:.2f}%)\n
+👥 Подписчики которые заходили в последний раз:
+    🕕 от 1 секунды до 2-3 дней назад: {} ({:.2f}%)
+    🕐 от 2-3 дней до 7 дней назад: {} ({:.2f}%)
+    🕐 от 7 дней до месяца назад: {} ({:.2f}%)
+    🕒 больше месяца назад: {} ({:.2f}%)
+''').format(online_count,online_count/analysys_completed*100,
+            one_three_days,one_three_days/analysys_completed*100,
+            three_to_week,three_to_week/analysys_completed*100,
+            week_to_month,week_to_month/analysys_completed*100,
+            more_than_month,more_than_month/analysys_completed*100)
         wait_text = _('\nПримерное время ожидание: {:.0f} секунд').format(wait_time)
 
         try:
