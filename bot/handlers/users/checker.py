@@ -100,10 +100,10 @@ async def analys_channel(analysys_peapole_in_second, channel, current_count, fol
 🕐 от 2-3 дней до месяца назад: {} ({})
 🕒 больше месяца назад: {} (3.53%)
 ''').format(online_count,online_count/analysys_completed*100,one_three_days,one_three_days/analysys_completed*100,week_to_month,week_to_month/analysys_completed*100,more_than_month,more_than_month/analysys_completed*100)
-        text4 = _('\nПримерное время ожидание: {:.0f} секунд').format(wait_time)
+        wait_text = _('\nПримерное время ожидание: {:.0f} секунд').format(wait_time)
 
         try:
-            msg = await  msg.edit_text(text2 + text3 + text4)
+            msg = await  msg.edit_text(text2 + text3 + text4+wait_text)
         except aiogram.utils.exceptions.MessageNotModified:
             pass
         except:
@@ -113,5 +113,5 @@ async def analys_channel(analysys_peapole_in_second, channel, current_count, fol
 
             await asyncio.sleep(refresh_time)
     Channel.update(bot_users=fake, not_fake_percent=1-fake/followers_count,followers_count=followers_count).where(Channel.name == channel).execute()
-    await msg.edit_text(text2 + text3 + _('\n\nАнализ завершен.'))
+    await msg.edit_text(text2 + text3 +text4+ _('\n\nАнализ завершен.'))
     return msg
