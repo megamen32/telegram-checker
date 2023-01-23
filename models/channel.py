@@ -10,6 +10,8 @@ class Channel(BaseModel):
     followers_count=IntegerField(default=0)
     not_fake_percent=FloatField(default=0.8)
     bot_users=IntegerField(default=0)
+    online_percent=FloatField(default=0.05)
+    recent_percent=FloatField(default=0.6)
 
     def __repr__(self) -> str:
         return f'<Channel {self.name}>'
