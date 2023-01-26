@@ -58,7 +58,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Analys Complete"
+"The analysis is completed."
 
 #: bot/handlers/users/checker.py:73
 msgid ""
@@ -76,13 +76,13 @@ msgid ""
 "Примерное время ожидание: {:.0f} секунд"
 msgstr ""
 "\n"
-"Remaing wait time {:.0f} secs"
+"Approximate waiting time: {:.0f} secs"
 
 #: bot/handlers/users/checker.py:135
 msgid ""
 "\n"
 "\n"
-"Проанализированно: {} из {} - {:.1f}%"
+"Проанализировано: {} из {} - {:.1f}%"
 msgstr ""
 "\n"
 "\n"
@@ -126,7 +126,7 @@ msgstr ""
 
 #: bot/handlers/users/settings.py:21
 msgid "Выбран язык:"
-msgstr "Language Choosen:"
+msgstr "Language Chosen:"
 
 #: bot/handlers/users/settings.py:25
 msgid "Для получения статистики канала или чата отправьте боту ссылку на него."

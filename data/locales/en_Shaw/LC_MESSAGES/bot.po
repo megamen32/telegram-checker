@@ -58,7 +58,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Analys Complete"
+"Analysis Complete"
 
 #: bot/handlers/users/checker.py:73
 msgid ""
@@ -89,7 +89,6 @@ msgstr ""
 "Completed: {} из {} - {:.1f}%"
 
 #: bot/handlers/users/checker.py:137
-#, fuzzy
 msgid ""
 "\n"
 "        👥 Подписчики: {} ({:.2f}%)\n"
@@ -127,7 +126,7 @@ msgstr ""
 
 #: bot/handlers/users/settings.py:21
 msgid "Выбран язык:"
-msgstr "Language Choosen:"
+msgstr "Language Chosen:"
 
 #: bot/handlers/users/settings.py:25
 msgid "Для получения статистики канала или чата отправьте боту ссылку на него."
