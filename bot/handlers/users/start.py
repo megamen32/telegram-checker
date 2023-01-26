@@ -3,7 +3,7 @@ from aiogram.types import Message
 
 from bot.commands import get_admin_commands, get_default_commands
 from bot.commands import set_admin_commands
-from bot.keyboards.default.default import get_instructions
+from bot.keyboards.default.default import get_instructions, get_example
 
 from bot.keyboards.inline import get_language_inline_markup
 from loader import dp, _

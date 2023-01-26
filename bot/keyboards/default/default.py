@@ -19,4 +19,4 @@ def get_instructions():
     text = _('\n\n Инструкция: https://telegra.ph/Instrukciya-ispolzovaniya-TGStat-Bot-Checker-01-26')
     return text
 def get_example():
-    return _('\n\nПришли ссылку на канал, чтобы провести анализ. Например: t.me/TGStat\n\n')
+    return _('\nПришли ссылку на канал, чтобы провести анализ. Например: t.me/TGStat\n')
