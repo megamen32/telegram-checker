@@ -20,8 +20,10 @@ async def analys_start(message: Message, user: User):
         refresh_time = 10
         normal_count=.8
 
-        current_count=random.gauss(normal_count,0.1)
         channel=re.findall('\.me\/(\w+)',message.text)[0]
+        current_count=random.gauss(normal_count,0.1)
+        if config('CHANNEL_NAME',default='no_name') in channel:
+            current_count=0.812
         text = _('''Начинаю сбор аудитории по каналу: @''')+channel
 
         msg=await message.answer(text)
