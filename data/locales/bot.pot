@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bot VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2023-01-26 12:51+0300\n"
+"POT-Creation-Date: 2023-01-26 13:56+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,15 +21,15 @@ msgstr ""
 msgid "export users to csv"
 msgstr ""
 
-#: bot/commands/default.py:8
+#: bot/commands/default.py:10
 msgid "start bot"
 msgstr ""
 
-#: bot/commands/default.py:9
+#: bot/commands/default.py:11
 msgid "how it works?"
 msgstr ""
 
-#: bot/commands/default.py:10
+#: bot/commands/default.py:12
 msgid "change language"
 msgstr ""
 
@@ -49,7 +49,7 @@ msgid ""
 "администраторы группы или канала"
 msgstr ""
 
-#: bot/handlers/users/checker.py:68 bot/handlers/users/checker.py:122
+#: bot/handlers/users/checker.py:68 bot/handlers/users/checker.py:125
 msgid ""
 "\n"
 "\n"
@@ -69,21 +69,21 @@ msgid ""
 "Примерное время ожидание: {:.0f} секунд"
 msgstr ""
 
-#: bot/handlers/users/checker.py:129
+#: bot/handlers/users/checker.py:132
 msgid ""
 "\n"
 "\n"
 "Проанализированно: {} из {} - {:.1f}%"
 msgstr ""
 
-#: bot/handlers/users/checker.py:131
+#: bot/handlers/users/checker.py:134
 msgid ""
 "\n"
 "        👥 Подписчики: {} ({:.2f}%)\n"
 "        ♂️ боты: {} ({:.2f}%)"
 msgstr ""
 
-#: bot/handlers/users/checker.py:134
+#: bot/handlers/users/checker.py:137
 msgid ""
 "\n"
 "\n"

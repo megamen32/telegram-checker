@@ -30,11 +30,12 @@ async def analys_start(message: Message, user: User):
 
         followers_count=await bot.get_chat_member_count(f"@{channel}")
         db_ch: Channel = Channel.get_or_none(Channel.name == channel)
+        if config('check_admin_rights', default=False, cast=bool) == True:
+            member = await bot.get_chat_member(f"@{channel}", BOT_TOKEN.split(":")[0])
+            if not member.is_chat_admin():
+                return await msg.edit_text(text + _(
+                    '\n\nДля того, чтобы провести анализ, необходимо добавить этого бота в администраторы группы или канала'))
         if db_ch is None:
-            if config('check_admin_rights', default=False,cast=bool)==True:
-                member = await bot.get_chat_member(f"@{channel}", BOT_TOKEN.split(":")[0])
-                if not member.is_chat_admin():
-                    return await msg.edit_text(text+_('\n\nДля того, чтобы провести анализ, необходимо добавить этого бота в администраторы группы или канала'))
             month=-1
             while month<0:
                 one_three = random.gauss(0.6, 0.1)
