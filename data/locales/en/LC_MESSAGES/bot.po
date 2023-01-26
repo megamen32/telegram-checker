@@ -65,7 +65,7 @@ msgid ""
 "\n"
 "\n"
 "Такой чат не найден"
-msgstr ""
+msgstr "\n\n Chat not found"
 
 #: bot/handlers/users/checker.py:109
 msgid ""
@@ -108,7 +108,15 @@ msgid ""
 "    🕐 от 7 дней до месяца назад: {} ({:.2f}%)\n"
 "    🕒 больше месяца назад: {} ({:.2f}%)\n"
 msgstr ""
-
+"\n"
+"\n"
+"📢Online: {} ({:.2f}%)\n"
+"\n"
+"👥 Subscribers who visited last time:\n"
+"   🕕 from 1 second to 2-3 days ago: {} ({:.2f}%)\n"
+"   🕐 from 2-3 days to 7 days ago: {} ({:.2f}%)\n"
+"   🕐 from 7 days to a month ago: {} ({:.2f}%)\n"
+"   🕒 more than a month ago: {} ({:.2f}%)\n"
 #: bot/handlers/users/helpers.py:10
 msgid "Choose an action from the menu 👇"
 msgstr ""
@@ -119,7 +127,7 @@ msgstr "Language Choosen:"
 
 #: bot/handlers/users/settings.py:25
 msgid "Для получения статистики канала или чата отправьте боту ссылку на него."
-msgstr "Please, send a link for channel or group to start analitcs"
+msgstr "Please, send a link for channel or group to start analytics"
 
 #: bot/handlers/users/settings.py:33
 msgid "Choose your language"
@@ -131,7 +139,7 @@ msgstr "Выберите язык / Choose language:"
 
 #: bot/handlers/users/start.py:28 bot/keyboards/default/default.py:9
 msgid "Help 🆘"
-msgstr ""
+msgstr "Help"
 
 #: bot/handlers/users/start.py:28
 msgid ""
@@ -139,7 +147,7 @@ msgid ""
 "\n"
 "Пришли ссылку на канал, чтобы провезти анализ. Например: t.me/TGStat\n"
 "\n"
-msgstr ""
+msgstr "\n\nPlease, send a link for channel or group to start analytics. For example :t.me/TGStat\n\n"
 
 #: bot/keyboards/default/default.py:9
 msgid "Settings 🛠"
