@@ -85,7 +85,7 @@ async def analys_channel(analysys_peapole_in_second, channel, current_count, fol
     is_first_time=channel.bot_users==0
     while analysys_completed != followers_count:
 
-        analysys_completed += int(max(0, random.gauss(analysys_peapole_in_second * refresh_time, 1000)))
+        analysys_completed += int(max(0, analysys_peapole_in_second * refresh_time*random.gauss(1, 0.5)))
         if analysys_completed > followers_count:
             analysys_completed = int(min(followers_count, analysys_completed))
 
