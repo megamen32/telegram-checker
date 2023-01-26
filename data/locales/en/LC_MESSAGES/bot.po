@@ -89,7 +89,6 @@ msgstr ""
 "Completed: {} из {} - {:.1f}%"
 
 #: bot/handlers/users/checker.py:137
-#, fuzzy
 msgid ""
 "\n"
 "        👥 Подписчики: {} ({:.2f}%)\n"
