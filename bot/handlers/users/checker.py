@@ -7,7 +7,7 @@ import aiogram
 from aiogram.types import Message, User, ReplyKeyboardRemove
 from decouple import config
 
-from bot.handlers.users.helpers import get_instructions
+from bot.keyboards.default.default import get_instructions
 from data.config import BOT_TOKEN
 from loader import dp, _,bot
 from models.channel import Channel
