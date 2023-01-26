@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bot VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2023-01-26 13:56+0300\n"
+"POT-Creation-Date: 2023-01-26 20:23+0300\n"
 "PO-Revision-Date: 2023-01-20 20:38+0300\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -38,19 +38,22 @@ msgstr ""
 msgid "Total users: {count}"
 msgstr ""
 
-#: bot/handlers/users/checker.py:25
+#: bot/handlers/users/checker.py:27
 msgid "Начинаю сбор аудитории по каналу: @"
 msgstr "Start analyzing channel @"
 
-#: bot/handlers/users/checker.py:37
+#: bot/handlers/users/checker.py:38
 msgid ""
 "\n"
 "\n"
 "Для того, чтобы провести анализ, необходимо добавить этого бота в "
 "администраторы группы или канала"
-msgstr "\n\nTo analyze channel you will need to add this bot in chat admins"
+msgstr ""
+"\n"
+"\n"
+"To analyze channel you will need to add this bot in chat admins"
 
-#: bot/handlers/users/checker.py:68 bot/handlers/users/checker.py:125
+#: bot/handlers/users/checker.py:71 bot/handlers/users/checker.py:128
 msgid ""
 "\n"
 "\n"
@@ -60,14 +63,14 @@ msgstr ""
 "\n"
 "Analyse Complete"
 
-#: bot/handlers/users/checker.py:70
+#: bot/handlers/users/checker.py:73
 msgid ""
 "\n"
 "\n"
 "Такой чат не найден"
 msgstr ""
 
-#: bot/handlers/users/checker.py:109
+#: bot/handlers/users/checker.py:112
 msgid ""
 "\n"
 "Примерное время ожидание: {:.0f} секунд"
@@ -75,7 +78,7 @@ msgstr ""
 "\n"
 "Remaing wait time {:.0f} secs"
 
-#: bot/handlers/users/checker.py:132
+#: bot/handlers/users/checker.py:135
 msgid ""
 "\n"
 "\n"
@@ -85,7 +88,7 @@ msgstr ""
 "\n"
 "Completed: {} из {} - {:.1f}%"
 
-#: bot/handlers/users/checker.py:134
+#: bot/handlers/users/checker.py:137
 #, fuzzy
 msgid ""
 "\n"
@@ -96,7 +99,7 @@ msgstr ""
 "        💚 Subscribers: {} ({:.2f}%)\n"
 "        ♂️ Bots: {} ({:.2f}%)"
 
-#: bot/handlers/users/checker.py:137
+#: bot/handlers/users/checker.py:140
 msgid ""
 "\n"
 "\n"

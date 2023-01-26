@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bot VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2023-01-26 13:56+0300\n"
+"POT-Creation-Date: 2023-01-26 20:23+0300\n"
 "PO-Revision-Date: 2023-01-20 20:38+0300\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -38,11 +38,11 @@ msgstr ""
 msgid "Total users: {count}"
 msgstr ""
 
-#: bot/handlers/users/checker.py:25
+#: bot/handlers/users/checker.py:27
 msgid "Начинаю сбор аудитории по каналу: @"
 msgstr "Start analyzing channel @"
 
-#: bot/handlers/users/checker.py:37
+#: bot/handlers/users/checker.py:38
 msgid ""
 "\n"
 "\n"
@@ -50,7 +50,7 @@ msgid ""
 "администраторы группы или канала"
 msgstr ""
 
-#: bot/handlers/users/checker.py:68 bot/handlers/users/checker.py:125
+#: bot/handlers/users/checker.py:71 bot/handlers/users/checker.py:128
 msgid ""
 "\n"
 "\n"
@@ -60,14 +60,17 @@ msgstr ""
 "\n"
 "Analys Complete"
 
-#: bot/handlers/users/checker.py:70
+#: bot/handlers/users/checker.py:73
 msgid ""
 "\n"
 "\n"
 "Такой чат не найден"
-msgstr "\n\n Chat not found"
+msgstr ""
+"\n"
+"\n"
+" Chat not found"
 
-#: bot/handlers/users/checker.py:109
+#: bot/handlers/users/checker.py:112
 msgid ""
 "\n"
 "Примерное время ожидание: {:.0f} секунд"
@@ -75,7 +78,7 @@ msgstr ""
 "\n"
 "Remaing wait time {:.0f} secs"
 
-#: bot/handlers/users/checker.py:132
+#: bot/handlers/users/checker.py:135
 msgid ""
 "\n"
 "\n"
@@ -85,7 +88,7 @@ msgstr ""
 "\n"
 "Completed: {} из {} - {:.1f}%"
 
-#: bot/handlers/users/checker.py:134
+#: bot/handlers/users/checker.py:137
 #, fuzzy
 msgid ""
 "\n"
@@ -96,7 +99,7 @@ msgstr ""
 "        💚 Subscribers: {} ({:.2f}%)\n"
 "        ♂️ Bots: {} ({:.2f}%)"
 
-#: bot/handlers/users/checker.py:137
+#: bot/handlers/users/checker.py:140
 msgid ""
 "\n"
 "\n"
@@ -117,6 +120,7 @@ msgstr ""
 "   🕐 from 2-3 days to 7 days ago: {} ({:.2f}%)\n"
 "   🕐 from 7 days to a month ago: {} ({:.2f}%)\n"
 "   🕒 more than a month ago: {} ({:.2f}%)\n"
+
 #: bot/handlers/users/helpers.py:10
 msgid "Choose an action from the menu 👇"
 msgstr ""
@@ -147,7 +151,12 @@ msgid ""
 "\n"
 "Пришли ссылку на канал, чтобы провезти анализ. Например: t.me/TGStat\n"
 "\n"
-msgstr "\n\nPlease, send a link for channel or group to start analytics. For example :t.me/TGStat\n\n"
+msgstr ""
+"\n"
+"\n"
+"Please, send a link for channel or group to start analytics. For example "
+":t.me/TGStat\n"
+"\n"
 
 #: bot/keyboards/default/default.py:9
 msgid "Settings 🛠"
