@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bot VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2023-01-27 00:55+0300\n"
+"POT-Creation-Date: 2023-01-27 01:20+0300\n"
 "PO-Revision-Date: 2023-01-20 20:38+0300\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -120,13 +120,13 @@ msgstr ""
 "   🕐 from 7 days to a month ago: {} ({:.2f}%)\n"
 "   🕒 more than a month ago: {} ({:.2f}%)\n"
 
-#: bot/handlers/users/helpers.py:10
+#: bot/handlers/users/helpers.py:13
 msgid "Choose an action from the menu 👇"
 msgstr ""
 
 #: bot/handlers/users/settings.py:23
 msgid "Выбран язык:"
-msgstr "Language Chosen:"
+msgstr "Language Chosen: "
 
 #: bot/handlers/users/settings.py:27
 msgid "Для получения статистики канала или чата отправьте боту ссылку на него."
@@ -143,19 +143,6 @@ msgstr "Выберите язык / Choose language:"
 #: bot/handlers/users/start.py:30
 msgid "Help"
 msgstr "Help"
-
-#: bot/handlers/users/start.py:30
-msgid ""
-"\n"
-"\n"
-"Пришли ссылку на канал, чтобы провести анализ. Например: t.me/TGStat\n"
-"\n"
-msgstr ""
-"\n"
-"\n"
-"Please, send a link for channel or group to start analytics. For example "
-":https://telemetr.me\n"
-"\n"
 
 #: bot/keyboards/default/default.py:9
 msgid "Help 🆘"
@@ -180,6 +167,19 @@ msgstr ""
 "\n"
 "Instructions: https://telegra.ph/Bot-analytics-of-channels-from-"
 "telemetryme-01-26"
+
+#: bot/keyboards/default/default.py:22
+msgid ""
+"\n"
+"\n"
+"Пришли ссылку на канал, чтобы провести анализ. Например: t.me/TGStat\n"
+"\n"
+msgstr ""
+"\n"
+"\n"
+"Please, send a link for channel or group to start analytics. For example "
+":https://telemetr.me\n"
+"\n"
 
 #: bot/middlewares/throttling.py:35
 msgid "Too many requests!"
@@ -458,5 +458,8 @@ msgstr[1] ""
 #~ "\n"
 #~ "\n"
 #~ "Chat with that name not found"
+#~ msgstr ""
+
+#~ msgid "Choose an action from the menu 👇"
 #~ msgstr ""
 

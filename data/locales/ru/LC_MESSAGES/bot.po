@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2023-01-27 00:55+0300\n"
+"POT-Creation-Date: 2023-01-27 01:20+0300\n"
 "PO-Revision-Date: 2022-03-24 14:03+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: ru\n"
@@ -98,7 +98,7 @@ msgid ""
 "    🕒 больше месяца назад: {} ({:.2f}%)\n"
 msgstr ""
 
-#: bot/handlers/users/helpers.py:10
+#: bot/handlers/users/helpers.py:13
 msgid "Choose an action from the menu 👇"
 msgstr "Выберите действие в меню 👇"
 
@@ -122,14 +122,6 @@ msgstr ""
 msgid "Help"
 msgstr "Помощь 🆘"
 
-#: bot/handlers/users/start.py:30
-msgid ""
-"\n"
-"\n"
-"Пришли ссылку на канал, чтобы провести анализ. Например: t.me/TGStat\n"
-"\n"
-msgstr ""
-
 #: bot/keyboards/default/default.py:9
 msgid "Help 🆘"
 msgstr "Помощь 🆘"
@@ -148,6 +140,14 @@ msgid ""
 "\n"
 " Инструкция: https://telegra.ph/Instrukciya-ispolzovaniya-TGStat-Bot-"
 "Checker-01-26"
+msgstr ""
+
+#: bot/keyboards/default/default.py:22
+msgid ""
+"\n"
+"\n"
+"Пришли ссылку на канал, чтобы провести анализ. Например: t.me/TGStat\n"
+"\n"
 msgstr ""
 
 #: bot/middlewares/throttling.py:35
@@ -483,4 +483,7 @@ msgstr[2] ""
 #~ "Пришли ссылку на канал, чтобы провезти анализ. Например: t.me/TGStat\n"
 #~ "\n"
 #~ msgstr ""
+
+#~ msgid "Choose an action from the menu 👇"
+#~ msgstr "Выберите действие в меню 👇"
 
