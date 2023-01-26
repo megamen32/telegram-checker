@@ -25,7 +25,7 @@ async def _start(message: Message, user: User):
 async def _help(message: Message, user: User):
     commands = get_admin_commands(user.language) if user.is_admin else get_default_commands(user.language)
 
-    text = _('Help 🆘') +('Send channel link to start analazyng bots. More instructions on https://tgstat.ru')+ '\n\n'
+    text = _('Help 🆘') +_('\n\nПришли ссылку на канал, чтобы провезти анализ. Например: t.me/TGStat')
     for command in commands:
         text += f'{command.command} - {command.description}\n'
 

@@ -5,7 +5,9 @@ import traceback
 
 import aiogram
 from aiogram.types import Message, User, ReplyKeyboardRemove
+from decouple import config
 
+from data.config import BOT_TOKEN
 from loader import dp, _,bot
 from models.channel import Channel
 
@@ -29,12 +31,17 @@ async def analys_start(message: Message, user: User):
         followers_count=await bot.get_chat_member_count(f"@{channel}")
         db_ch: Channel = Channel.get_or_none(Channel.name == channel)
         if db_ch is None:
+            if config('check_admin_rights', default=False):
+                member = await bot.get_chat_member(f"@{channel}", BOT_TOKEN.split(":")[0])
+                if not member.is_chat_admin():
+                    return await msg.edit_text(text+_('\n\nДля того, чтобы провести анализ, необходимо добавить этого бота в администраторы группы или канала'))
             month=-1
             while month<0:
                 one_three = random.gauss(0.6, 0.1)
-                three_week = random.gauss(0.2, 0.1)
+                three_week = random.gauss(0.3, 0.1)
                 week_month = random.gauss(0.1, 0.05)
                 month = 1 - one_three - three_week - week_month
+                if min(one_three,week_month,month,three_week)<0:continue
             db_ch = Channel.create(name=channel, not_fake_percent=current_count, followers_count=followers_count, online_percent=random.gauss(0.05,0.01), recent_percent=one_three,
                                    three_to_week_percent=three_week, week_to_month_percent=week_month, more_than_month_percent=month)
         else:
