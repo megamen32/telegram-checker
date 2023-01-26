@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bot VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2023-01-27 00:42+0300\n"
+"POT-Creation-Date: 2023-01-27 00:55+0300\n"
 "PO-Revision-Date: 2023-01-20 20:38+0300\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -124,18 +124,6 @@ msgstr ""
 msgid "Choose an action from the menu 👇"
 msgstr ""
 
-#: bot/handlers/users/helpers.py:13
-msgid ""
-"\n"
-"\n"
-" Инструкция: https://telegra.ph/Instrukciya-ispolzovaniya-TGStat-Bot-"
-"Checker-01-26"
-msgstr ""
-"\n"
-"\n"
-"Instructions: https://telegra.ph/Bot-analytics-of-channels-from-"
-"telemetryme-01-26"
-
 #: bot/handlers/users/settings.py:23
 msgid "Выбран язык:"
 msgstr "Language Chosen:"
@@ -148,15 +136,15 @@ msgstr "Please, send a link for channel or group to start analytics"
 msgid "Choose your language"
 msgstr ""
 
-#: bot/handlers/users/start.py:17
+#: bot/handlers/users/start.py:18
 msgid "Выберите язык / Choose language:"
 msgstr "Выберите язык / Choose language:"
 
-#: bot/handlers/users/start.py:29
+#: bot/handlers/users/start.py:30
 msgid "Help"
 msgstr "Help"
 
-#: bot/handlers/users/start.py:29
+#: bot/handlers/users/start.py:30
 msgid ""
 "\n"
 "\n"
@@ -180,6 +168,18 @@ msgstr ""
 #: bot/keyboards/default/default.py:12
 msgid "Export users 📁"
 msgstr ""
+
+#: bot/keyboards/default/default.py:19
+msgid ""
+"\n"
+"\n"
+" Инструкция: https://telegra.ph/Instrukciya-ispolzovaniya-TGStat-Bot-"
+"Checker-01-26"
+msgstr ""
+"\n"
+"\n"
+"Instructions: https://telegra.ph/Bot-analytics-of-channels-from-"
+"telemetryme-01-26"
 
 #: bot/middlewares/throttling.py:35
 msgid "Too many requests!"

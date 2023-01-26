@@ -3,8 +3,8 @@ from aiogram.types import CallbackQuery, Message
 from decouple import config
 
 from bot.commands import set_admin_commands, set_user_commands
-from bot.handlers.users.helpers import get_instructions
 from bot.keyboards.default import get_default_markup
+from bot.keyboards.default.default import get_instructions
 from bot.keyboards.inline import get_language_inline_markup
 from loader import dp, _, i18n
 from models import User

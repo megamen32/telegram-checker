@@ -15,3 +15,6 @@ def get_default_markup(user):
         return ReplyKeyboardRemove()
 
     return markup
+def get_instructions():
+    text = _('\n\n Инструкция: https://telegra.ph/Instrukciya-ispolzovaniya-TGStat-Bot-Checker-01-26')
+    return text
