@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bot VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2023-01-26 23:01+0300\n"
+"POT-Creation-Date: 2023-01-27 00:42+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -37,11 +37,11 @@ msgstr ""
 msgid "Total users: {count}"
 msgstr ""
 
-#: bot/handlers/users/checker.py:27
+#: bot/handlers/users/checker.py:28
 msgid "Начинаю сбор аудитории по каналу: @"
 msgstr ""
 
-#: bot/handlers/users/checker.py:38
+#: bot/handlers/users/checker.py:39
 msgid ""
 "\n"
 "\n"
@@ -49,41 +49,41 @@ msgid ""
 "администраторы группы или канала"
 msgstr ""
 
-#: bot/handlers/users/checker.py:71 bot/handlers/users/checker.py:128
+#: bot/handlers/users/checker.py:72 bot/handlers/users/checker.py:129
 msgid ""
 "\n"
 "\n"
 "Анализ завершен."
 msgstr ""
 
-#: bot/handlers/users/checker.py:73
+#: bot/handlers/users/checker.py:74
 msgid ""
 "\n"
 "\n"
 "Такой чат не найден"
 msgstr ""
 
-#: bot/handlers/users/checker.py:112
+#: bot/handlers/users/checker.py:113
 msgid ""
 "\n"
 "Примерное время ожидание: {:.0f} секунд"
 msgstr ""
 
-#: bot/handlers/users/checker.py:135
+#: bot/handlers/users/checker.py:136
 msgid ""
 "\n"
 "\n"
 "Проанализировано: {} из {} - {:.1f}%"
 msgstr ""
 
-#: bot/handlers/users/checker.py:137
+#: bot/handlers/users/checker.py:138
 msgid ""
 "\n"
 "        👥 Подписчики: {} ({:.2f}%)\n"
 "        ♂️ боты: {} ({:.2f}%)"
 msgstr ""
 
-#: bot/handlers/users/checker.py:140
+#: bot/handlers/users/checker.py:141
 msgid ""
 "\n"
 "\n"
@@ -100,40 +100,44 @@ msgstr ""
 msgid "Choose an action from the menu 👇"
 msgstr ""
 
-#: bot/handlers/users/settings.py:21
-msgid "Выбран язык:"
-msgstr ""
-
-#: bot/handlers/users/settings.py:25
-msgid "Для получения статистики канала или чата отправьте боту ссылку на него."
-msgstr ""
-
-#: bot/handlers/users/settings.py:33
-msgid "Choose your language"
-msgstr ""
-
-#: bot/handlers/users/start.py:16
-msgid "Выберите язык / Choose language:"
-msgstr ""
-
-#: bot/handlers/users/start.py:28 bot/keyboards/default/default.py:9
-msgid "Help 🆘"
-msgstr ""
-
-#: bot/handlers/users/start.py:28
-msgid ""
-"\n"
-"\n"
-"Пришли ссылку на канал, чтобы провезти анализ. Например: t.me/TGStat\n"
-"\n"
-msgstr ""
-
-#: bot/handlers/users/start.py:31
+#: bot/handlers/users/helpers.py:13
 msgid ""
 "\n"
 "\n"
 " Инструкция: https://telegra.ph/Instrukciya-ispolzovaniya-TGStat-Bot-"
 "Checker-01-26"
+msgstr ""
+
+#: bot/handlers/users/settings.py:23
+msgid "Выбран язык:"
+msgstr ""
+
+#: bot/handlers/users/settings.py:27
+msgid "Для получения статистики канала или чата отправьте боту ссылку на него."
+msgstr ""
+
+#: bot/handlers/users/settings.py:36
+msgid "Choose your language"
+msgstr ""
+
+#: bot/handlers/users/start.py:17
+msgid "Выберите язык / Choose language:"
+msgstr ""
+
+#: bot/handlers/users/start.py:29
+msgid "Help"
+msgstr ""
+
+#: bot/handlers/users/start.py:29
+msgid ""
+"\n"
+"\n"
+"Пришли ссылку на канал, чтобы провести анализ. Например: t.me/TGStat\n"
+"\n"
+msgstr ""
+
+#: bot/keyboards/default/default.py:9
+msgid "Help 🆘"
 msgstr ""
 
 #: bot/keyboards/default/default.py:9

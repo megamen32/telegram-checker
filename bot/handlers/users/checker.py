@@ -7,6 +7,7 @@ import aiogram
 from aiogram.types import Message, User, ReplyKeyboardRemove
 from decouple import config
 
+from bot.handlers.users.helpers import get_instructions
 from data.config import BOT_TOKEN
 from loader import dp, _,bot
 from models.channel import Channel
@@ -36,7 +37,7 @@ async def analys_start(message: Message, user: User):
             member = await bot.get_chat_member(f"@{channel}", BOT_TOKEN.split(":")[0])
             if not member.is_chat_admin():
                 return await msg.edit_text(text + _(
-                    '\n\nДля того, чтобы провести анализ, необходимо добавить этого бота в администраторы группы или канала'))
+                    '\n\nДля того, чтобы провести анализ, необходимо добавить этого бота в администраторы группы или канала')+get_instructions())
         if db_ch is None:
             month=-1
             while month<0:

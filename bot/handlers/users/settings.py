@@ -1,7 +1,9 @@
 from aiogram.dispatcher.filters.builtin import Regexp
 from aiogram.types import CallbackQuery, Message
+from decouple import config
 
 from bot.commands import set_admin_commands, set_user_commands
+from bot.handlers.users.helpers import get_instructions
 from bot.keyboards.default import get_default_markup
 from bot.keyboards.inline import get_language_inline_markup
 from loader import dp, _, i18n
@@ -23,7 +25,8 @@ async def _change_language(callback_query: CallbackQuery, regexp: Regexp, user: 
 async def get_welcome_screen(message: Message,user:User):
 
     text = _('''Для получения статистики канала или чата отправьте боту ссылку на него.''')
-
+    if config('BOT_VARIANT',default=False,cast=bool):
+        text+=get_instructions()
     await message.answer(text)
 
 

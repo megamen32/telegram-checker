@@ -3,6 +3,7 @@ from aiogram.types import Message
 
 from bot.commands import get_admin_commands, get_default_commands
 from bot.commands import set_admin_commands
+from bot.handlers.users.helpers import get_instructions
 from bot.keyboards.inline import get_language_inline_markup
 from loader import dp, _
 from models import User
@@ -25,8 +26,11 @@ async def _start(message: Message, user: User):
 async def _help(message: Message, user: User):
     commands = get_admin_commands(user.language) if user.is_admin else get_default_commands(user.language)
 
-    text = _('Help 🆘') +_('\n\nПришли ссылку на канал, чтобы провезти анализ. Например: t.me/TGStat\n\n')
+    text = _('Help') +_('\n\nПришли ссылку на канал, чтобы провести анализ. Например: t.me/TGStat\n\n')
     for command in commands:
         text += f'{command.command} - {command.description}\n'
-    text+=_('\n\n Инструкция: https://telegra.ph/Instrukciya-ispolzovaniya-TGStat-Bot-Checker-01-26')
+    text +=  get_instructions()
     await message.answer(text)
+
+
+
