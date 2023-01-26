@@ -79,7 +79,6 @@ msgstr ""
 "Approximate waiting time: {:.0f} secs"
 
 #: bot/handlers/users/checker.py:135
-#, fuzzy
 msgid ""
 "\n"
 "\n"
