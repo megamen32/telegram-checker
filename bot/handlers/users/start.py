@@ -27,7 +27,7 @@ async def _start(message: Message, user: User):
 async def _help(message: Message, user: User):
     commands = get_admin_commands(user.language) if user.is_admin else get_default_commands(user.language)
 
-    text = _('Help') + get_example()
+    text = _('Help') + get_example()+'\n'
     for command in commands:
         text += f'{command.command} - {command.description}\n'
     text +=  get_instructions()
