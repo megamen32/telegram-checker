@@ -132,7 +132,7 @@ async def analys_channel(analysys_peapole_in_second, channel, current_count, fol
 def render_text(analysys_completed, fake, more_than_month, one_three_days, online_count, real_peapole, three_to_week,
                 week_to_month,followers_count):
     real_percent=real_peapole/analysys_completed*100
-    text2= _('\n\nПроанализированно: {} из {} - {:.1f}%').format(analysys_completed, followers_count,
+    text2= _('\n\nПроанализировано: {} из {} - {:.1f}%').format(analysys_completed, followers_count,
                                                                                  analysys_completed/followers_count*100)
     text3 = _('''
         👥 Подписчики: {} ({:.2f}%)
