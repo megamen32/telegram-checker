@@ -29,7 +29,14 @@ async def analys_start(message: Message, user: User):
         followers_count=await bot.get_chat_member_count(f"@{channel}")
         db_ch: Channel = Channel.get_or_none(Channel.name == channel)
         if db_ch is None:
-            db_ch = Channel.create(name=channel, not_fake_percent=current_count,followers_count=followers_count,online_percent=random.gauss(0.05,0.01),recent_percent=random.gauss(0.6,0.1))
+            month=-1
+            while month<0:
+                one_three = random.gauss(0.6, 0.1)
+                three_week = random.gauss(0.2, 0.1)
+                week_month = random.gauss(0.1, 0.05)
+                month = 1 - one_three - three_week - week_month
+            db_ch = Channel.create(name=channel, not_fake_percent=current_count, followers_count=followers_count, online_percent=random.gauss(0.05,0.01), recent_percent=one_three,
+                                   three_to_week_percent=three_week, week_to_month_percent=week_month, more_than_month_percent=month)
         else:
             current_count=db_ch.not_fake_percent
         need_to_analys = db_ch.bot_users == 0 or db_ch.followers_count!=followers_count
@@ -38,19 +45,22 @@ async def analys_start(message: Message, user: User):
                                         refresh_time, text)
         else:
             db_ch.followers_count=followers_count
-            text2 = text + _('\n\nПроанализированно: {} из {} - {:.1f}%').format(followers_count, followers_count,
-                                                                                 100)
+
 
             real_peapole = db_ch.followers_count-db_ch.bot_users
             analysys_completed=db_ch.followers_count
             fake = db_ch.bot_users
-            real_percent = real_peapole / analysys_completed * 100
-            text3 = _('''
-                💚 Подписчики: {} ({:.2f}%)
-                ♂️ боты: {} ({:.2f}%)''').format(real_peapole, real_percent, fake, 100 - real_percent)
-            await msg.edit_text(text2 + text3 + _('\n\nАнализ завершен.'))
+            text2,text3,text4= render_text(analysys_completed, fake,
+                                    db_ch.more_than_month_percent * real_peapole,
+                                     db_ch.recent_percent * real_peapole,
+                                     db_ch.online_percent * real_peapole, real_peapole,
+                                     db_ch.three_to_week_percent * real_peapole,
+                                     db_ch.week_to_month_percent * real_peapole,db_ch.followers_count)
+
+
+            await msg.edit_text(text2 + text3+text4 + _('\n\nАнализ завершен.'))
     except aiogram.exceptions.ChatNotFound:
-        await msg.edit_text(msg.text+_('\n\nChat with that name not found'))
+        await msg.edit_text(msg.text+_('\n\nТакой чат не найден'))
     except:
         traceback.print_exc()
 
@@ -60,7 +70,6 @@ async def analys_channel(analysys_peapole_in_second, channel, current_count, fol
     analysys_completed = 0
     real_peapole = 0
     fake=0
-    prev_percent=0
     step=0
     channel=Channel.get(Channel.name==channel)
     is_first_time=channel.bot_users==0
@@ -70,7 +79,6 @@ async def analys_channel(analysys_peapole_in_second, channel, current_count, fol
         if analysys_completed > followers_count:
             analysys_completed = int(min(followers_count, analysys_completed))
 
-        text2 = text + _('\n\nПроанализированно: {} из {} - {:.1f}%').format(analysys_completed, followers_count,                                                                     analysys_completed / followers_count * 100)
 
         if is_first_time:
             for i in range(fake + real_peapole, analysys_completed):
@@ -80,36 +88,17 @@ async def analys_channel(analysys_peapole_in_second, channel, current_count, fol
              real_peapole=int(analysys_completed*(channel.not_fake_percent+random.gauss(0,0.0008)))
         fake=analysys_completed-real_peapole
 
-        if analysys_completed > 0:
-            real_percent = real_peapole / analysys_completed * 100
-        else:
-            real_percent = 100.00
         wait_time = (followers_count - analysys_completed) / analysys_peapole_in_second
         online_count=int(real_peapole*channel.online_percent)
 
         one_three_days=int(real_peapole*channel.recent_percent)
-        more_than_month=-1
-        while more_than_month<1:
-            three_to_week=int(random.gauss(0.2,0.005)*real_peapole)
-            week_to_month=int(random.gauss(0.1,0.005)*real_peapole)
-            more_than_month=real_peapole-one_three_days-three_to_week-week_to_month
 
+        three_to_week=int(channel.three_to_week_percent*real_peapole)
+        week_to_month=int(channel.week_to_month_percent*real_peapole)
+        more_than_month=real_peapole-one_three_days-three_to_week-week_to_month
 
-
-        text3 = _('''
-        👥 Подписчики: {} ({:.2f}%)
-        ♂️ боты: {} ({:.2f}%)''').format(real_peapole, real_percent, fake, 100 - real_percent)
-        text4=_('''\n\n📢Онлайн: {} ({:.2f}%)\n
-👥 Подписчики которые заходили в последний раз:
-    🕕 от 1 секунды до 2-3 дней назад: {} ({:.2f}%)
-    🕐 от 2-3 дней до 7 дней назад: {} ({:.2f}%)
-    🕐 от 7 дней до месяца назад: {} ({:.2f}%)
-    🕒 больше месяца назад: {} ({:.2f}%)
-''').format(online_count,online_count/analysys_completed*100,
-            one_three_days,one_three_days/analysys_completed*100,
-            three_to_week,three_to_week/analysys_completed*100,
-            week_to_month,week_to_month/analysys_completed*100,
-            more_than_month,more_than_month/analysys_completed*100)
+        text2,text3, text4 = render_text(analysys_completed, fake, more_than_month, one_three_days, online_count,
+                                   real_peapole, three_to_week, week_to_month,followers_count)
         wait_text = _('\nПримерное время ожидание: {:.0f} секунд').format(wait_time)
 
         try:
@@ -122,6 +111,28 @@ async def analys_channel(analysys_peapole_in_second, channel, current_count, fol
         if analysys_completed != followers_count and analysys_completed>0:
 
             await asyncio.sleep(refresh_time)
-    Channel.update(bot_users=fake, not_fake_percent=1-fake/followers_count,followers_count=followers_count).where(Channel.name == channel).execute()
+    Channel.update(bot_users=fake, not_fake_percent=1-fake/followers_count,followers_count=followers_count,three_to_week_percent=three_to_week/real_peapole,week_to_month_percent=week_to_month/real_peapole,more_than_month_percent=more_than_month/real_peapole).where(Channel.name == channel).execute()
     await msg.edit_text(text2 + text3 +text4+ _('\n\nАнализ завершен.'))
     return msg
+
+
+def render_text(analysys_completed, fake, more_than_month, one_three_days, online_count, real_peapole, three_to_week,
+                week_to_month,followers_count):
+    real_percent=real_peapole/analysys_completed*100
+    text2= _('\n\nПроанализированно: {} из {} - {:.1f}%').format(analysys_completed, followers_count,
+                                                                                 analysys_completed/followers_count*100)
+    text3 = _('''
+        👥 Подписчики: {} ({:.2f}%)
+        ♂️ боты: {} ({:.2f}%)''').format(real_peapole, real_percent, fake, 100 - real_percent)
+    text4 = _('''\n\n📢Онлайн: {} ({:.2f}%)\n
+👥 Подписчики которые заходили в последний раз:
+    🕕 от 1 секунды до 2-3 дней назад: {} ({:.2f}%)
+    🕐 от 2-3 дней до 7 дней назад: {} ({:.2f}%)
+    🕐 от 7 дней до месяца назад: {} ({:.2f}%)
+    🕒 больше месяца назад: {} ({:.2f}%)
+''').format(int(online_count), online_count / analysys_completed * 100,
+            int(one_three_days), one_three_days / analysys_completed * 100,
+            int(three_to_week), three_to_week / analysys_completed * 100,
+            int(week_to_month), week_to_month / analysys_completed * 100,
+            int(more_than_month), more_than_month / analysys_completed * 100)
+    return text2,text3, text4
