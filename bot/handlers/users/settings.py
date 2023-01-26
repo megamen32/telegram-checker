@@ -9,7 +9,7 @@ from models import User
 from services.users import edit_user_language
 
 
-@dp.callback_query_handler(Regexp('^lang_(\w\w)$'))
+@dp.callback_query_handler(Regexp('^lang_(\w+)$'))
 async def _change_language(callback_query: CallbackQuery, regexp: Regexp, user: User):
     language = regexp.group(1)
 
@@ -17,7 +17,7 @@ async def _change_language(callback_query: CallbackQuery, regexp: Regexp, user: 
     i18n.set_user_locale(language)
 
     await set_admin_commands(user.id, language) if user.is_admin else await set_user_commands(user.id, language)
-    dicts={'ru':'Русский','en':'English','uk':'Українська'}
+    dicts={'ru':'Русский','en':'English','uk':'Русский','en_Shaw':'English'}
     await callback_query.message.answer(_(f'Выбран язык:')+ dicts[language])
     await get_welcome_screen(callback_query.message,user)
 async def get_welcome_screen(message: Message,user:User):
