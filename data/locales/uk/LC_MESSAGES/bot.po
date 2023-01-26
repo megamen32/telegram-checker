@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2023-01-26 20:51+0300\n"
+"POT-Creation-Date: 2023-01-26 23:01+0300\n"
 "PO-Revision-Date: 2022-03-24 14:03+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: uk\n"
@@ -150,6 +150,14 @@ msgstr ""
 "Пришли ссылку на канал, чтобы провезти анализ. Пример: "
 "https://telemetr.me\n"
 "\n"
+
+#: bot/handlers/users/start.py:31
+msgid ""
+"\n"
+"\n"
+" Инструкция: https://telegra.ph/Instrukciya-ispolzovaniya-TGStat-Bot-"
+"Checker-01-26"
+msgstr "\n\nИнструкция: https://telegra.ph/Bot-analitiki-kanalov-ot-telemetrme-01-26"
 
 #: bot/keyboards/default/default.py:9
 msgid "Settings 🛠"

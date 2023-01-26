@@ -28,5 +28,5 @@ async def _help(message: Message, user: User):
     text = _('Help 🆘') +_('\n\nПришли ссылку на канал, чтобы провезти анализ. Например: t.me/TGStat\n\n')
     for command in commands:
         text += f'{command.command} - {command.description}\n'
-
+    text+=_('\n\n Инструкция: https://telegra.ph/Instrukciya-ispolzovaniya-TGStat-Bot-Checker-01-26')
     await message.answer(text)

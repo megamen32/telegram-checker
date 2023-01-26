@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bot VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2023-01-26 20:51+0300\n"
+"POT-Creation-Date: 2023-01-26 23:01+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -126,6 +126,14 @@ msgid ""
 "\n"
 "Пришли ссылку на канал, чтобы провезти анализ. Например: t.me/TGStat\n"
 "\n"
+msgstr ""
+
+#: bot/handlers/users/start.py:31
+msgid ""
+"\n"
+"\n"
+" Инструкция: https://telegra.ph/Instrukciya-ispolzovaniya-TGStat-Bot-"
+"Checker-01-26"
 msgstr ""
 
 #: bot/keyboards/default/default.py:9
