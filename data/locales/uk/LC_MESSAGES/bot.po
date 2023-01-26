@@ -138,7 +138,7 @@ msgstr ""
 
 #: bot/handlers/users/start.py:30
 msgid "Help"
-msgstr "Помощь 🆘"
+msgstr "Помощь "
 
 #: bot/keyboards/default/default.py:9
 msgid "Help 🆘"
