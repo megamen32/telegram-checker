@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2023-01-27 01:20+0300\n"
+"POT-Creation-Date: 2023-01-27 01:28+0300\n"
 "PO-Revision-Date: 2022-03-24 14:03+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: ru\n"
@@ -145,9 +145,7 @@ msgstr ""
 #: bot/keyboards/default/default.py:22
 msgid ""
 "\n"
-"\n"
 "Пришли ссылку на канал, чтобы провести анализ. Например: t.me/TGStat\n"
-"\n"
 msgstr ""
 
 #: bot/middlewares/throttling.py:35
@@ -486,4 +484,11 @@ msgstr[2] ""
 
 #~ msgid "Choose an action from the menu 👇"
 #~ msgstr "Выберите действие в меню 👇"
+
+#~ msgid ""
+#~ "\n"
+#~ "\n"
+#~ "Пришли ссылку на канал, чтобы провести анализ. Например: t.me/TGStat\n"
+#~ "\n"
+#~ msgstr ""
 
