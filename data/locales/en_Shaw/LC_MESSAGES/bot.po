@@ -154,7 +154,7 @@ msgstr ""
 "\n"
 "\n"
 "Please, send a link for channel or group to start analytics. For example "
-":t.me/TGStat\n"
+":https://telemetr.me\n"
 "\n"
 
 #: bot/keyboards/default/default.py:9
