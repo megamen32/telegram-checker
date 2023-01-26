@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bot VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2023-01-27 01:28+0300\n"
+"POT-Creation-Date: 2023-01-27 01:33+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -143,7 +143,7 @@ msgstr ""
 #: bot/keyboards/default/default.py:22
 msgid ""
 "\n"
-"Пришли ссылку на канал, чтобы провести анализ. Например: t.me/TGStat\n"
+"Пришли ссылку на канал, чтобы провести анализ. Например: t.me/TGStat"
 msgstr ""
 
 #: bot/middlewares/throttling.py:35
