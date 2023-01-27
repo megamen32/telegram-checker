@@ -20,7 +20,7 @@ msgstr ""
 
 #: bot/commands/admin.py:11
 msgid "export users to csv"
-msgstr "Export users to file .csv"
+msgstr "Export results to file .csv"
 
 #: bot/commands/default.py:10
 msgid "start bot"
@@ -28,7 +28,7 @@ msgstr "Start bot"
 
 #: bot/commands/default.py:11
 msgid "how it works?"
-msgstr "How it works?"
+msgstr "FAQ"
 
 #: bot/commands/default.py:12
 msgid "change language"
@@ -67,7 +67,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"This group or channel are not found."
+"This group or channel are not found. Check the link and try again!"
 
 #: bot/handlers/users/checker.py:113
 msgid ""
@@ -114,7 +114,7 @@ msgid ""
 msgstr ""
 "      📢 Online: {online_count} ({online_percent:.2f}%)\n"
 "\n"
-"👥 Subscribers last visited: \n"
+"👥 Subscribers last visited:\n"
 "      🕕 ≤ 3 days ago: {one_three_days} ({one_three_days_p:.2f}%)\n"
 "      🕐 ≤ 7 days ago: {three_to_week} ({three_to_week_p:.2f}%)\n"
 "      🕐 ≤ a month ago: {week_to_month} ({week_to_month_p:.2f}%)\n"
@@ -142,19 +142,19 @@ msgstr "Выберите язык / Choose language:"
 
 #: bot/handlers/users/start.py:30
 msgid "Help"
-msgstr "Help 🆘"
+msgstr "🆘 Help\n"
 
 #: bot/keyboards/default/default.py:9
 msgid "Help 🆘"
-msgstr "Help 🆘"
+msgstr "🆘 Help "
 
 #: bot/keyboards/default/default.py:9
 msgid "Settings 🛠"
-msgstr ""
+msgstr "🛠 Settings"
 
 #: bot/keyboards/default/default.py:12
 msgid "Export users 📁"
-msgstr ""
+msgstr " 📁 Export results"
 
 #: bot/keyboards/default/default.py:19
 msgid ""
@@ -171,8 +171,7 @@ msgid ""
 "Пришли ссылку на канал, чтобы провести анализ. Например: t.me/TGStat"
 msgstr ""
 "\n"
-"\n"
-"Please, send a channel or group link to start analysis. For example, t.me/TGStat"
+"Please, send a channel or group link to start analysis, for example t.me/TGStat"
 
 #: bot/middlewares/throttling.py:35
 msgid "Too many requests!"
