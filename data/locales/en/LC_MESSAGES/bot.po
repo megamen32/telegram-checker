@@ -130,7 +130,7 @@ msgstr "Language сhosen: "
 
 #: bot/handlers/users/settings.py:27
 msgid "Для получения статистики канала или чата отправьте боту ссылку на него."
-msgstr "Please, send a channel or group link to start analysis."
+msgstr "Please, send a channel or group link to start analysis:"
 
 #: bot/handlers/users/settings.py:36
 msgid "Choose your language"
