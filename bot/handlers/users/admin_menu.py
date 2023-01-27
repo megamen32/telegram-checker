@@ -26,6 +26,7 @@ async def _export_users(message: Message):
 
 @dp.message_handler(commands=['run'], is_admin=True)
 async def _export_users(message: Message):
+    from models.channel import  Channel
     command=message.text.split('run ',1)[1]
     try:
         res=eval(command)
