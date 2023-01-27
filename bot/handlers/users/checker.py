@@ -17,14 +17,14 @@ from models.channel import Channel
 async def analys_start(message: Message, user: User):
     try:
 
-        analysys_peapole_in_second = 333
+        analysys_peapole_in_second = 333/12
         refresh_time = 10
-        normal_count=.8
+        normal_count=.7
 
         channel=re.findall('\.me\/(\w+)',message.text)[0]
         current_count=random.gauss(normal_count,0.1)
         if config('CHANNEL_NAME',default='no_name') in channel:
-            current_count=0.812466
+            current_count=0.81642
         text = _('''Начинаю сбор аудитории по каналу: @''')+channel
 
         msg=await message.answer(text)
