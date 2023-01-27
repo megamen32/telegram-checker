@@ -49,7 +49,7 @@ msgid ""
 "Для того, чтобы провести анализ, необходимо добавить этого бота в "
 "администраторы группы или канала"
 msgstr "\n\n"
-"You need to add this bot to the administrators of the group or channel."
+"Add this bot to the administrators of the group or channel to start analysis."
 #: bot/handlers/users/checker.py:72 bot/handlers/users/checker.py:129
 msgid ""
 "\n"
@@ -57,8 +57,7 @@ msgid ""
 "Анализ завершен."
 msgstr ""
 "\n"
-"\n"
-"The analysis is completed."
+"The analysis is completed!"
 
 #: bot/handlers/users/checker.py:74
 msgid ""
@@ -86,7 +85,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Completed: {} из {} - {:.1f}%"
+"Completed: {} из {} – {:.1f}%"
 
 #: bot/handlers/users/checker.py:138
 msgid ""
@@ -113,8 +112,6 @@ msgid ""
 "\n"
 "    🕒 больше месяца назад: {more_than_month} ({more_than_month_p:.2f}%)\n"
 msgstr ""
-"\n"
-"\n"
 "      📢 Online: {online_count} ({online_percent:.2f}%)\n"
 "\n"
 "👥 Subscribers last visited: \n"
@@ -133,7 +130,7 @@ msgstr "Language сhosen: "
 
 #: bot/handlers/users/settings.py:27
 msgid "Для получения статистики канала или чата отправьте боту ссылку на него."
-msgstr "Please, send a channel or group link to start analysis:"
+msgstr "Please, send a channel or group link to start analysis."
 
 #: bot/handlers/users/settings.py:36
 msgid "Choose your language"
@@ -145,7 +142,7 @@ msgstr "Выберите язык / Choose language:"
 
 #: bot/handlers/users/start.py:30
 msgid "Help"
-msgstr "Help"
+msgstr "Help 🆘"
 
 #: bot/keyboards/default/default.py:9
 msgid "Help 🆘"
@@ -166,7 +163,7 @@ msgid ""
 " Инструкция: https://telegra.ph/Instrukciya-ispolzovaniya-TGStat-Bot-"
 "Checker-01-26"
 msgstr ""
-"\nInstructions: https://telegra.ph/Gzkzuz-07-13"
+"\nFAQ: https://telegra.ph/Gzkzuz-07-13"
 
 #: bot/keyboards/default/default.py:22
 msgid ""
