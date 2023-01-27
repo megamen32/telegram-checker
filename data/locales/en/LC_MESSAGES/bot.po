@@ -92,7 +92,7 @@ msgstr ""
 msgid ""
 "\n"
 "        👥 Подписчики: {real_people} ({real_percent:.2f}%)\n"
-"        🔴️ боты: {fake} ({fake_percent:.2f}%)"
+"        ♂️ боты: {fake} ({fake_percent:.2f}%)"
 msgstr ""
 "\n"
 "        💚 Subscribers: {real_people} ({real_percent:.2f}%)\n"
@@ -144,8 +144,8 @@ msgid "Выберите язык / Choose language:"
 msgstr "Выберите язык / Choose language:"
 
 #: bot/handlers/users/start.py:30
-msgid "Help 🆘"
-msgstr "Help 🆘"
+msgid "Help"
+msgstr "Help"
 
 #: bot/keyboards/default/default.py:9
 msgid "Help 🆘"
@@ -166,7 +166,7 @@ msgid ""
 " Инструкция: https://telegra.ph/Instrukciya-ispolzovaniya-TGStat-Bot-"
 "Checker-01-26"
 msgstr ""
-"Instructions: https://telegra.ph/Gzkzuz-07-13"
+"\nInstructions: https://telegra.ph/Gzkzuz-07-13"
 
 #: bot/keyboards/default/default.py:22
 msgid ""
