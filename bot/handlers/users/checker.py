@@ -1,4 +1,5 @@
 import asyncio
+import datetime
 import random
 import re
 import traceback
@@ -139,22 +140,32 @@ async def render_text(analysys_completed, fake, more_than_month, one_three_days,
     if config('BOT_VARIANT',default=False,cast=bool):
         me = await bot.get_me()
         html_content=_('''
-<p>💚 Subscribers: {real_people} ({real_percent:.2f}%)</p>
-<p>♂️ Bots: {fake} ({fake_percent:.2f}%)</p>    
-<p>🙋 Subscribers who visited last time:</p>    
-<p>⏳ from 1 second to 2-3 days ago: {one_three_days} ({one_three_days_p:.2f}%)</p>    
-<p>⏳ from 2-3 days to 7 days ago:   {three_to_week} ({three_to_week_p:.2f}%)</p>    
-<p>⏳ from 7 days to a month ago:    {week_to_month} ({week_to_month_p:.2f}%)</p>    
-<p>⏳ more than a month ago:         {more_than_month} ({more_than_month_p:.2f}%) </p>      ''').format(real_people=real_people,real_percent= real_percent, fake=fake,fake_percent= 100 - real_percent,online_count=int(online_count),online_percent= online_count / analysys_completed * 100,
+<p><strong>ВСЕГО ПРОВЕРЕНО: {analysys_completed}</strong></p>
+<p>Подписчиков онлайн на момент проверки: <b>{online_count}</b></p>
+<p>Пользователь был онлайн: </p>  
+<li>до 3 дней назад: {one_three_days} ({one_three_days_p:.2f}%)</li>    
+<li>до 7 дней назад: {three_to_week} ({three_to_week_p:.2f}%)</li>    
+<li>до 30 дней назад: {week_to_month} ({week_to_month_p:.2f}%)</li>    
+<li>более 30 дней назад: {more_than_month} ({more_than_month_p:.2f}%) </li>  
+<p><b>Предположительная доля ботов</b> (заблокированные, удаленные, спам аккаунты): {fake} ({fake_percent:.2f}%)</p>   
+<p><b>Внимание!</b> Данный бот лишь один из методов проверки аудитории, не забывайте использовать полную статистику канала и дополнительные инструменты на сайте telemetr.me   </p>
+<p>____</p>
+<p>КАК ОПРЕДЕЛИТЬ НАКРУТКУ?</p>
+<li>1.      </li>
+<li>2.      </li>
+<li>3.      </li>
+<p>Больше статистических данных и полезной информации доступно на нашем сайте telemetr.me!</p>
+    ''').format(real_people=real_people,real_percent= real_percent, fake=fake,fake_percent= 100 - real_percent,online_count=int(online_count),online_percent= online_count / analysys_completed * 100,
                 one_three_days=int(one_three_days), one_three_days_p=one_three_days / analysys_completed * 100,
                 three_to_week=int(three_to_week),three_to_week_p= three_to_week / analysys_completed * 100,
                 week_to_month=int(week_to_month),week_to_month_p= week_to_month / analysys_completed * 100,
                 more_than_month=int(more_than_month), more_than_month_p=more_than_month / analysys_completed * 100)
         telegraph = Telegraph()
         await telegraph.create_account(short_name=me.username)
-
+        channel=Channel.get(Channel.name==name)
+        chat=await bot.get_chat('@'+channel.name)
         response = await telegraph.create_page(
-            _('Детальный отчет по каналу {name}').format(name=name),
+            _('{date}-{name}').format(date=datetime.datetime.now().strftime("%d%m/%y"),name=chat.title),
         html_content = html_content)
         text4='\n\nОтчет доступен по ссылке: {response}'.format(response=response['url'])
     else:
