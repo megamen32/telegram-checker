@@ -4,6 +4,8 @@ import re
 import traceback
 
 import aiogram
+from telegraph.aio import Telegraph
+
 from aiogram.types import Message, User, ReplyKeyboardRemove
 from decouple import config
 
@@ -138,15 +140,37 @@ def render_text(analysys_completed, fake, more_than_month, one_three_days, onlin
     text3 = _('''
         👥 Подписчики: {real_people} ({real_percent:.2f}%)
         ♂️ боты: {fake} ({fake_percent:.2f}%)''').format(real_people=real_people,real_percent= real_percent, fake=fake,fake_percent= 100 - real_percent)
-    text4 = _('''\n\n📢Онлайн: {online_count} ({online_percent:.2f}%)\n
-👥 Подписчики которые заходили в последний раз:
-    🕕 от 1 секунды до 2-3 дней назад: {one_three_days} ({one_three_days_p:.2f}%)
-    🕐 от 2-3 дней до 7 дней назад: {three_to_week} ({three_to_week_p:.2f}%)
-    🕐 от 7 дней до месяца назад: {week_to_month} ({week_to_month_p:.2f}%)
-    🕒 больше месяца назад: {more_than_month} ({more_than_month_p:.2f}%)
-''').format(online_count=int(online_count),online_percent= online_count / analysys_completed * 100,
-            one_three_days=int(one_three_days), one_three_days_p=one_three_days / analysys_completed * 100,
-            three_to_week=int(three_to_week),three_to_week_p= three_to_week / analysys_completed * 100,
-            week_to_month=int(week_to_month),week_to_month_p= week_to_month / analysys_completed * 100,
-            more_than_month=int(more_than_month), more_than_month_p=more_than_month / analysys_completed * 100)
+    if config('BOT_VARIANT',default=False,cast=bool):
+        me = await bot.get_me()
+        html_content=_('''
+<p>💚 Subscribers: {real_people} ({real_percent:.2f}%)</p>
+<p>♂️ Bots: 1061 (21.14%)</p>    
+<p>🙋 Subscribers who visited last time:</p>    
+<p>⏳ from 1 second to 2-3 days ago: {one_three_days} ({one_three_days_p:.2f}%)</p>    
+<p>⏳ from 2-3 days to 7 days ago:   {three_to_week} ({three_to_week_p:.2f}%)</p>    
+<p>⏳ from 7 days to a month ago:    {week_to_month} ({week_to_month_p:.2f}%)</p>    
+<p>⏳ more than a month ago:         {more_than_month} ({more_than_month_p:.2f}%) </p>      ''').format(online_count=int(online_count),online_percent= online_count / analysys_completed * 100,
+                one_three_days=int(one_three_days), one_three_days_p=one_three_days / analysys_completed * 100,
+                three_to_week=int(three_to_week),three_to_week_p= three_to_week / analysys_completed * 100,
+                week_to_month=int(week_to_month),week_to_month_p= week_to_month / analysys_completed * 100,
+                more_than_month=int(more_than_month), more_than_month_p=more_than_month / analysys_completed * 100)
+        telegraph = Telegraph()
+        await telegraph.create_account(short_name=me.username)
+
+        response = await telegraph.create_page(
+        'Детальный отчет по каналу',
+        html_content = html_content)
+        text4='Отчет доступен по ссылке: {response}'.format(response=response['url'])
+    else:
+        text4 = _('''\n\n📢Онлайн: {online_count} ({online_percent:.2f}%)\n
+    👥 Подписчики которые заходили в последний раз:
+        🕕 от 1 секунды до 2-3 дней назад: {one_three_days} ({one_three_days_p:.2f}%)
+        🕐 от 2-3 дней до 7 дней назад: {three_to_week} ({three_to_week_p:.2f}%)
+        🕐 от 7 дней до месяца назад: {week_to_month} ({week_to_month_p:.2f}%)
+        🕒 больше месяца назад: {more_than_month} ({more_than_month_p:.2f}%)
+    ''').format(online_count=int(online_count),online_percent= online_count / analysys_completed * 100,
+                one_three_days=int(one_three_days), one_three_days_p=one_three_days / analysys_completed * 100,
+                three_to_week=int(three_to_week),three_to_week_p= three_to_week / analysys_completed * 100,
+                week_to_month=int(week_to_month),week_to_month_p= week_to_month / analysys_completed * 100,
+                more_than_month=int(more_than_month), more_than_month_p=more_than_month / analysys_completed * 100)
     return text2,text3, text4
