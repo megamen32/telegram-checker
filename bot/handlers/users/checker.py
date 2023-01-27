@@ -160,7 +160,7 @@ async def render_text(analysys_completed, fake, more_than_month, one_three_days,
         response = await telegraph.create_page(
         'Детальный отчет по каналу',
         html_content = html_content)
-        text4='Отчет доступен по ссылке: {response}'.format(response=response['url'])
+        text4='\n\nОтчет доступен по ссылке: {response}'.format(response=response['url'])
     else:
         text4 = _('''\n\n📢Онлайн: {online_count} ({online_percent:.2f}%)\n
     👥 Подписчики которые заходили в последний раз:
