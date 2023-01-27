@@ -144,12 +144,12 @@ async def render_text(analysys_completed, fake, more_than_month, one_three_days,
         me = await bot.get_me()
         html_content=_('''
 <p>💚 Subscribers: {real_people} ({real_percent:.2f}%)</p>
-<p>♂️ Bots: 1061 (21.14%)</p>    
+<p>♂️ Bots: {fake} ({fake_percent:.2f}%)</p>    
 <p>🙋 Subscribers who visited last time:</p>    
 <p>⏳ from 1 second to 2-3 days ago: {one_three_days} ({one_three_days_p:.2f}%)</p>    
 <p>⏳ from 2-3 days to 7 days ago:   {three_to_week} ({three_to_week_p:.2f}%)</p>    
 <p>⏳ from 7 days to a month ago:    {week_to_month} ({week_to_month_p:.2f}%)</p>    
-<p>⏳ more than a month ago:         {more_than_month} ({more_than_month_p:.2f}%) </p>      ''').format(online_count=int(online_count),online_percent= online_count / analysys_completed * 100,
+<p>⏳ more than a month ago:         {more_than_month} ({more_than_month_p:.2f}%) </p>      ''').format(real_people=real_people,real_percent= real_percent, fake=fake,fake_percent= 100 - real_percent,online_count=int(online_count),online_percent= online_count / analysys_completed * 100,
                 one_three_days=int(one_three_days), one_three_days_p=one_three_days / analysys_completed * 100,
                 three_to_week=int(three_to_week),three_to_week_p= three_to_week / analysys_completed * 100,
                 week_to_month=int(week_to_month),week_to_month_p= week_to_month / analysys_completed * 100,
