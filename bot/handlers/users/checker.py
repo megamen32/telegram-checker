@@ -156,7 +156,7 @@ async def render_text(analysys_completed, fake, more_than_month, one_three_days,
         await telegraph.create_account(short_name=me.username)
 
         response = await telegraph.create_page(
-            _('Детальный отчет по каналу {name}').format(name=name)
+            _('Детальный отчет по каналу {name}').format(name=name),
         html_content = html_content)
         text4='\n\nОтчет доступен по ссылке: {response}'.format(response=response['url'])
     else:
