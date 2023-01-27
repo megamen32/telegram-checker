@@ -143,9 +143,7 @@ async def render_text(analysys_completed, fake, more_than_month, one_three_days,
 <p><strong>ВСЕГО ПРОВЕРЕНО: {analysys_completed}</strong></p>
 <p>Подписчиков онлайн на момент проверки: <b>{online_count}</b></p>
 <p>Пользователь был онлайн: </p>  
-<ul> 
-    <li>до 3 дней назад: {one_three_days} ({one_three_days_p:.2f}%)</li>    <li>до 7 дней назад: {three_to_week} ({three_to_week_p:.2f}%)</li>    <li>до 30 дней назад: {week_to_month} ({week_to_month_p:.2f}%)</li>   <li>более 30 дней назад: {more_than_month} ({more_than_month_p:.2f}%) </li>  
-</ul> 
+<ul><li>до 3 дней назад: {one_three_days} ({one_three_days_p:.2f}%)</li><li>до 7 дней назад: {three_to_week} ({three_to_week_p:.2f}%)</li><li>до 30 дней назад: {week_to_month} ({week_to_month_p:.2f}%)</li><li>более 30 дней назад: {more_than_month} ({more_than_month_p:.2f}%)</li></ul> 
 <p><b>Предположительная доля ботов</b> (заблокированные, удаленные, спам аккаунты): {fake} ({fake_percent:.2f}%)</p>   
 <p><b>Внимание!</b> Данный бот лишь один из методов проверки аудитории, не забывайте использовать полную статистику канала и дополнительные инструменты на сайте telemetr.me   </p>
 <p>____</p>
