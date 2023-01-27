@@ -115,11 +115,11 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"👥 Subscribers who visited last time:\n"
-"   🕕 from 1 second to 2-3 days ago: {one_three_days} (one_three_days_p{:.2f}%)\n"
-"   🕐 from 2-3 days to 7 days ago: {three_to_week} ({three_to_week_p:.2f}%)\n"
-"   🕐 from 7 days to a month ago: {week_to_month} ({week_to_month_p:.2f}%)\n"
-"   🕒 more than a month ago: {more_than_month} ({more_than_month_p:.2f}%)\n"
+"🙋 Subscribers who visited last time:\n"
+"   ⏳ from 1 second to 2-3 days ago: {one_three_days} ({one_three_days_p:.2f}%)\n"
+"   ⏳ from 2-3 days to 7 days ago: {three_to_week} ({three_to_week_p:.2f}%)\n"
+"   ⏳ from 7 days to a month ago: {week_to_month} ({week_to_month_p:.2f}%)\n"
+"   ⏳ more than a month ago: {more_than_month} ({more_than_month_p:.2f}%)\n"
 '\n📢 Online: {online_count} ({online_percent:.2f}%)\n'
 
 #: bot/handlers/users/helpers.py:13
