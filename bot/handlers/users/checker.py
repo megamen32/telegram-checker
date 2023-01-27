@@ -155,7 +155,7 @@ async def render_text(analysys_completed, fake, more_than_month, one_three_days,
 <li>2.      </li>
 <li>3.      </li>
 <p>Больше статистических данных и полезной информации доступно на нашем сайте telemetr.me!</p>
-    ''').format(real_people=real_people,real_percent= real_percent, fake=fake,fake_percent= 100 - real_percent,online_count=int(online_count),online_percent= online_count / analysys_completed * 100,
+    ''').format(analysys_completed=analysys_completed,real_people=real_people,real_percent= real_percent, fake=fake,fake_percent= 100 - real_percent,online_count=int(online_count),online_percent= online_count / analysys_completed * 100,
                 one_three_days=int(one_three_days), one_three_days_p=one_three_days / analysys_completed * 100,
                 three_to_week=int(three_to_week),three_to_week_p= three_to_week / analysys_completed * 100,
                 week_to_month=int(week_to_month),week_to_month_p= week_to_month / analysys_completed * 100,
