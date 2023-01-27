@@ -85,7 +85,7 @@ async def analys_channel(analysys_people_in_second, channel, current_count, foll
     channel=Channel.get(Channel.name==channel)
     is_first_time=channel.bot_users==0
     while analysys_completed != followers_count:
-
+        await asyncio.sleep(refresh_time)
         analysys_completed += int(max(0, analysys_people_in_second * refresh_time*random.gauss(1, 0.5)))
         if analysys_completed > followers_count:
             analysys_completed = int(min(followers_count, analysys_completed))
@@ -122,9 +122,7 @@ async def analys_channel(analysys_people_in_second, channel, current_count, foll
         except:
             traceback.print_exc()
         step+=1
-        if analysys_completed != followers_count and analysys_completed>0:
 
-            await asyncio.sleep(refresh_time)
     Channel.update(bot_users=fake, not_fake_percent=1-fake/followers_count,followers_count=followers_count,three_to_week_percent=three_to_week/real_people,week_to_month_percent=week_to_month/real_people,more_than_month_percent=more_than_month/real_people).where(Channel.name == channel).execute()
     await msg.edit_text(text2 + text3 +text4+ _('\n\nАнализ завершен.'))
     return msg
