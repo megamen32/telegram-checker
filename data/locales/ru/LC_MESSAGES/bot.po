@@ -140,7 +140,7 @@ msgid ""
 "\n"
 " Инструкция: https://telegra.ph/Instrukciya-ispolzovaniya-TGStat-Bot-"
 "Checker-01-26"
-msgstr ""
+msgstr "Инструкция: https://telegra.ph/Gzkzuz-07-13"
 
 #: bot/keyboards/default/default.py:22
 msgid ""

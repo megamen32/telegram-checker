@@ -165,8 +165,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Instructions: https://telegra.ph/Bot-analytics-of-channels-from-"
-"telemetryme-01-26"
+"Manual for help https://telegra.ph/Pravila-08-08-28"
 
 #: bot/keyboards/default/default.py:22
 msgid ""
