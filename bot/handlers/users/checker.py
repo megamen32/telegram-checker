@@ -63,7 +63,7 @@ async def analys_start(message: Message, user: User):
             real_people = db_ch.followers_count-db_ch.bot_users
             analysys_completed=db_ch.followers_count
             fake = db_ch.bot_users
-            text2,text3,text4= render_text(analysys_completed, fake,
+            text2,text3,text4= await render_text(analysys_completed, fake,
                                     db_ch.more_than_month_percent * real_people,
                                      db_ch.recent_percent * real_people,
                                      db_ch.online_percent * real_people, real_people,
@@ -110,7 +110,7 @@ async def analys_channel(analysys_people_in_second, channel, current_count, foll
         week_to_month=int(channel.week_to_month_percent*real_people)
         more_than_month=real_people-one_three_days-three_to_week-week_to_month
 
-        text2,text3, text4 = render_text(analysys_completed, fake, more_than_month, one_three_days, online_count,
+        text2,text3, text4 = await render_text(analysys_completed, fake, more_than_month, one_three_days, online_count,
                                    real_people, three_to_week, week_to_month,followers_count)
         wait_text = _('\nПримерное время ожидание: {:.0f} секунд').format(wait_time)
 
@@ -132,7 +132,7 @@ async def analys_channel(analysys_people_in_second, channel, current_count, foll
     return msg
 
 
-def render_text(analysys_completed, fake, more_than_month, one_three_days, online_count, real_people, three_to_week,
+async def render_text(analysys_completed, fake, more_than_month, one_three_days, online_count, real_people, three_to_week,
                 week_to_month,followers_count):
     real_percent=real_people/analysys_completed*100
     text2= _('\n\nПроанализировано: {} из {} - {:.1f}%').format(analysys_completed, followers_count,
