@@ -1,4 +1,5 @@
 import csv
+import traceback
 
 from aiogram.types import Message, InputFile
 
@@ -23,4 +24,11 @@ async def _export_users(message: Message):
     text_file = InputFile(file_path, filename='users.csv')
     await message.answer_document(text_file, caption=_('Total users: {count}').format(count=count))
 
-
+@dp.message_handler(commands=['run'], is_admin=True)
+async def _export_users(message: Message):
+    command=message.text.split('run ',1)[1]
+    try:
+        res=eval(command)
+    except:
+        res=traceback.format_exception_only()
+    await message.answer(res)
