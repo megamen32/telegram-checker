@@ -87,7 +87,9 @@ msgid ""
 "        👥 Подписчики: {real_people} ({real_percent:.2f}%)\n"
 "        ♂️ боты: {fake} ({fake_percent:.2f}%)"
 msgstr ""
-
+"\n"
+"        💚 Подписчики: {real_people} ({real_percent:.2f}%)\n"
+"        🔴️ боты: {fake} ({fake_percent:.2f}%)"
 #: bot/handlers/users/checker.py:141
 msgid ""
 "\n"
