@@ -151,9 +151,9 @@ async def render_text(analysys_completed, fake, more_than_month, one_three_days,
 <p><b>Внимание!</b> Данный бот лишь один из методов проверки аудитории, не забывайте использовать полную статистику канала и дополнительные инструменты на сайте telemetr.me   </p>
 <p>____</p>
 <p>КАК ОПРЕДЕЛИТЬ НАКРУТКУ?</p>
-<li>1.      </li>
+<ul><li>1.      </li>
 <li>2.      </li>
-<li>3.      </li>
+<li>3.      </li>      </ul>
 <p>Больше статистических данных и полезной информации доступно на нашем сайте telemetr.me!</p>
     ''').format(analysys_completed=analysys_completed,real_people=real_people,real_percent= real_percent, fake=fake,fake_percent= 100 - real_percent,online_count=int(online_count),online_percent= online_count / analysys_completed * 100,
                 one_three_days=int(one_three_days), one_three_days_p=one_three_days / analysys_completed * 100,
@@ -161,11 +161,11 @@ async def render_text(analysys_completed, fake, more_than_month, one_three_days,
                 week_to_month=int(week_to_month),week_to_month_p= week_to_month / analysys_completed * 100,
                 more_than_month=int(more_than_month), more_than_month_p=more_than_month / analysys_completed * 100)
         telegraph = Telegraph()
-        await telegraph.create_account(short_name=me.username)
+        await telegraph.create_account(short_name=me.username,author_name='telemetr.me',author_url='https://telemetr.me')
         channel=Channel.get(Channel.name==name)
         chat=await bot.get_chat('@'+channel.name)
         response = await telegraph.create_page(
-            _('{date}-{name}').format(date=datetime.datetime.now().strftime("%d%m/%y"),name=chat.title),
+            _('{date}-{name}').format(date=datetime.datetime.now().strftime("%d/%m/%y"),name=chat.title),
         html_content = html_content)
         text4='\n\nОтчет доступен по ссылке: {response}'.format(response=response['url'])
     else:
