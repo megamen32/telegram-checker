@@ -17,7 +17,7 @@ from models.channel import Channel
 async def analys_start(message: Message, user: User):
     try:
 
-        analysys_people_in_second = 333/12
+        analysys_people_in_second = 3333
         refresh_time = 10
         normal_count=.7
 
