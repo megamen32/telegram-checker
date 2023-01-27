@@ -66,7 +66,7 @@ async def analys_start(message: Message, user: User):
             text2,text3,text4= await render_text(analysys_completed, fake, db_ch.more_than_month_percent * real_people,
                                                  db_ch.recent_percent * real_people, db_ch.online_percent * real_people,
                                                  real_people, db_ch.three_to_week_percent * real_people,
-                                                 db_ch.week_to_month_percent * real_people, db_ch.followers_count)
+                                                 db_ch.week_to_month_percent * real_people, db_ch.followers_count,channel.name)
 
 
             await msg.edit_text(text2 + text3+text4 + _('\n\nАнализ завершен.'))
@@ -109,7 +109,7 @@ async def analys_channel(analysys_people_in_second, channel, current_count, foll
         more_than_month=real_people-one_three_days-three_to_week-week_to_month
 
         text2,text3, text4 = await render_text(analysys_completed, fake, more_than_month, one_three_days, online_count,
-                                               real_people, three_to_week, week_to_month, followers_count)
+                                               real_people, three_to_week, week_to_month, followers_count,channel.name)
         wait_text = _('\nПримерное время ожидание: {:.0f} секунд').format(wait_time)
 
         try:
