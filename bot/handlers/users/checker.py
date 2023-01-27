@@ -163,9 +163,11 @@ async def render_text(analysys_completed, fake, more_than_month, one_three_days,
         await telegraph.create_account(short_name=me.username,author_name='telemetr.me',author_url='https://telemetr.me')
         channel=Channel.get(Channel.name==name)
         chat=await bot.get_chat('@'+channel.name)
+
         response = await telegraph.create_page(
             _('{date}-{name}').format(date=datetime.datetime.now().strftime("%d/%m/%y"),name=chat.title),
-        html_content = html_content)
+        html_content = html_content,author_name='telemetr.me',author_url='https://telemetr.me')
+
         text4='\n\nОтчет доступен по ссылке: {response}'.format(response=response['url'])
     else:
         text4 = _('''\n\n📢Онлайн: {online_count} ({online_percent:.2f}%)\n
