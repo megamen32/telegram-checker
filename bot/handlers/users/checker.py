@@ -66,7 +66,7 @@ async def analys_start(message: Message, user: User):
             text2,text3,text4= await render_text(analysys_completed, fake, db_ch.more_than_month_percent * real_people,
                                                  db_ch.recent_percent * real_people, db_ch.online_percent * real_people,
                                                  real_people, db_ch.three_to_week_percent * real_people,
-                                                 db_ch.week_to_month_percent * real_people, db_ch.followers_count,channel.name)
+                                                 db_ch.week_to_month_percent * real_people, db_ch.followers_count,channel)
 
 
             await msg.edit_text(text2 + text3+text4 + _('\n\nАнализ завершен.'))
