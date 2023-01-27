@@ -31,5 +31,5 @@ async def _export_users(message: Message):
     try:
         res=eval(command)
     except:
-        res=traceback.format_exception_only()
+        res=traceback.format_exc(chain=False)
     await message.answer(res)
