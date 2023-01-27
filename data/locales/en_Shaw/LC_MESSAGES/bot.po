@@ -176,7 +176,7 @@ msgstr ""
 "\n"
 "\n"
 "Please, send a link for channel or group to start analytics. For example "
-":https://telemetr.me\n"
+":https://telemetr.me \n"
 "\n"
 
 #: bot/middlewares/throttling.py:35
