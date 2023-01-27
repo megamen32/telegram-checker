@@ -17,7 +17,7 @@ from models.channel import Channel
 async def analys_start(message: Message, user: User):
     try:
 
-        analysys_peapole_in_second = 333/12
+        analysys_people_in_second = 333/12
         refresh_time = 10
         normal_count=.7
 
@@ -52,21 +52,21 @@ async def analys_start(message: Message, user: User):
             current_count=db_ch.not_fake_percent
         need_to_analys = db_ch.bot_users == 0 or db_ch.followers_count!=followers_count
         if need_to_analys:
-            msg = await analys_channel(analysys_peapole_in_second, channel, current_count, followers_count, msg,
+            msg = await analys_channel(analysys_people_in_second, channel, current_count, followers_count, msg,
                                         refresh_time, text)
         else:
             db_ch.followers_count=followers_count
 
 
-            real_peapole = db_ch.followers_count-db_ch.bot_users
+            real_people = db_ch.followers_count-db_ch.bot_users
             analysys_completed=db_ch.followers_count
             fake = db_ch.bot_users
             text2,text3,text4= render_text(analysys_completed, fake,
-                                    db_ch.more_than_month_percent * real_peapole,
-                                     db_ch.recent_percent * real_peapole,
-                                     db_ch.online_percent * real_peapole, real_peapole,
-                                     db_ch.three_to_week_percent * real_peapole,
-                                     db_ch.week_to_month_percent * real_peapole,db_ch.followers_count)
+                                    db_ch.more_than_month_percent * real_people,
+                                     db_ch.recent_percent * real_people,
+                                     db_ch.online_percent * real_people, real_people,
+                                     db_ch.three_to_week_percent * real_people,
+                                     db_ch.week_to_month_percent * real_people,db_ch.followers_count)
 
 
             await msg.edit_text(text2 + text3+text4 + _('\n\nАнализ завершен.'))
@@ -76,40 +76,40 @@ async def analys_start(message: Message, user: User):
         traceback.print_exc()
 
 
-async def analys_channel(analysys_peapole_in_second, channel, current_count, followers_count, msg,
+async def analys_channel(analysys_people_in_second, channel, current_count, followers_count, msg,
                          refresh_time, text):
     analysys_completed = 0
-    real_peapole = 0
+    real_people = 0
     fake=0
     step=0
     channel=Channel.get(Channel.name==channel)
     is_first_time=channel.bot_users==0
     while analysys_completed != followers_count:
 
-        analysys_completed += int(max(0, analysys_peapole_in_second * refresh_time*random.gauss(1, 0.5)))
+        analysys_completed += int(max(0, analysys_people_in_second * refresh_time*random.gauss(1, 0.5)))
         if analysys_completed > followers_count:
             analysys_completed = int(min(followers_count, analysys_completed))
 
 
         if is_first_time:
-            for i in range(fake + real_peapole, analysys_completed):
+            for i in range(fake + real_people, analysys_completed):
                 if random.random() < current_count:
-                    real_peapole += 1
+                    real_people += 1
         else:
-             real_peapole=int(analysys_completed*(channel.not_fake_percent+random.gauss(0,0.0008)))
-        fake=analysys_completed-real_peapole
+             real_people=int(analysys_completed*(channel.not_fake_percent+random.gauss(0,0.0008)))
+        fake=analysys_completed-real_people
 
-        wait_time = (followers_count - analysys_completed) / analysys_peapole_in_second
-        online_count=int(real_peapole*channel.online_percent)
+        wait_time = (followers_count - analysys_completed) / analysys_people_in_second
+        online_count=int(real_people*channel.online_percent)
 
-        one_three_days=int(real_peapole*channel.recent_percent)
+        one_three_days=int(real_people*channel.recent_percent)
 
-        three_to_week=int(channel.three_to_week_percent*real_peapole)
-        week_to_month=int(channel.week_to_month_percent*real_peapole)
-        more_than_month=real_peapole-one_three_days-three_to_week-week_to_month
+        three_to_week=int(channel.three_to_week_percent*real_people)
+        week_to_month=int(channel.week_to_month_percent*real_people)
+        more_than_month=real_people-one_three_days-three_to_week-week_to_month
 
         text2,text3, text4 = render_text(analysys_completed, fake, more_than_month, one_three_days, online_count,
-                                   real_peapole, three_to_week, week_to_month,followers_count)
+                                   real_people, three_to_week, week_to_month,followers_count)
         wait_text = _('\nПримерное время ожидание: {:.0f} секунд').format(wait_time)
 
         try:
@@ -125,28 +125,28 @@ async def analys_channel(analysys_peapole_in_second, channel, current_count, fol
         if analysys_completed != followers_count and analysys_completed>0:
 
             await asyncio.sleep(refresh_time)
-    Channel.update(bot_users=fake, not_fake_percent=1-fake/followers_count,followers_count=followers_count,three_to_week_percent=three_to_week/real_peapole,week_to_month_percent=week_to_month/real_peapole,more_than_month_percent=more_than_month/real_peapole).where(Channel.name == channel).execute()
+    Channel.update(bot_users=fake, not_fake_percent=1-fake/followers_count,followers_count=followers_count,three_to_week_percent=three_to_week/real_people,week_to_month_percent=week_to_month/real_people,more_than_month_percent=more_than_month/real_people).where(Channel.name == channel).execute()
     await msg.edit_text(text2 + text3 +text4+ _('\n\nАнализ завершен.'))
     return msg
 
 
-def render_text(analysys_completed, fake, more_than_month, one_three_days, online_count, real_peapole, three_to_week,
+def render_text(analysys_completed, fake, more_than_month, one_three_days, online_count, real_people, three_to_week,
                 week_to_month,followers_count):
-    real_percent=real_peapole/analysys_completed*100
+    real_percent=real_people/analysys_completed*100
     text2= _('\n\nПроанализировано: {} из {} - {:.1f}%').format(analysys_completed, followers_count,
                                                                                  analysys_completed/followers_count*100)
     text3 = _('''
-        👥 Подписчики: {} ({:.2f}%)
-        ♂️ боты: {} ({:.2f}%)''').format(real_peapole, real_percent, fake, 100 - real_percent)
-    text4 = _('''\n\n📢Онлайн: {} ({:.2f}%)\n
+        👥 Подписчики: {real_people} ({real_percent:.2f}%)
+        ♂️ боты: {fake} ({fake_percent:.2f}%)''').format(real_people=real_people,real_percent= real_percent, fake=fake,fake_percent= 100 - real_percent)
+    text4 = _('''\n\n📢Онлайн: {online_count} ({online_percent:.2f}%)\n
 👥 Подписчики которые заходили в последний раз:
-    🕕 от 1 секунды до 2-3 дней назад: {} ({:.2f}%)
-    🕐 от 2-3 дней до 7 дней назад: {} ({:.2f}%)
-    🕐 от 7 дней до месяца назад: {} ({:.2f}%)
-    🕒 больше месяца назад: {} ({:.2f}%)
-''').format(int(online_count), online_count / analysys_completed * 100,
-            int(one_three_days), one_three_days / analysys_completed * 100,
-            int(three_to_week), three_to_week / analysys_completed * 100,
-            int(week_to_month), week_to_month / analysys_completed * 100,
-            int(more_than_month), more_than_month / analysys_completed * 100)
+    🕕 от 1 секунды до 2-3 дней назад: {one_three_days} ({one_three_days_p:.2f}%)
+    🕐 от 2-3 дней до 7 дней назад: {three_to_week} ({three_to_week_p:.2f}%)
+    🕐 от 7 дней до месяца назад: {week_to_month} ({week_to_month_p:.2f}%)
+    🕒 больше месяца назад: {more_than_month} ({more_than_month_p:.2f}%)
+''').format(online_count=int(online_count),online_percent= online_count / analysys_completed * 100,
+            one_three_days=int(one_three_days), one_three_days_p=one_three_days / analysys_completed * 100,
+            three_to_week=int(three_to_week),three_to_week_p= three_to_week / analysys_completed * 100,
+            week_to_month=int(week_to_month),week_to_month_p= week_to_month / analysys_completed * 100,
+            more_than_month=int(more_than_month), more_than_month_p=more_than_month / analysys_completed * 100)
     return text2,text3, text4
