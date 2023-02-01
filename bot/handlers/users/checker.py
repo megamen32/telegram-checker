@@ -142,13 +142,13 @@ async def render_text(analysys_completed, fake, more_than_month, one_three_days,
         me = await bot.get_me()
         html_content=_('''
 <p><strong>ВСЕГО ПРОВЕРЕНО: {analysys_completed}</strong></p>
+<p>{text3}</p>
 <p>Подписчиков онлайн на момент проверки: <b>{online_count}</b></p>
 <p>Пользователь был онлайн: </p>  
 <ul><li>до 3 дней назад: <b>{one_three_days} ({one_three_days_p:.2f}%)</b></li><li>до 7 дней назад: <b>{three_to_week} ({three_to_week_p:.2f}%)</b></li><li>до 30 дней назад: <b>{week_to_month} ({week_to_month_p:.2f}%)</b></li><li>более 30 дней назад: <b>{more_than_month} ({more_than_month_p:.2f}%)</b></li></ul> 
 <p><b>Предположительная доля ботов</b> (заблокированные, удаленные, спам аккаунты): <b>{fake} ({fake_percent:.2f}%)</b></p>   
 <p><b>Внимание!</b> Данный бот лишь один из методов проверки аудитории, не забывайте использовать полную статистику канала и дополнительные инструменты на сайте telemetr.me   </p>
 <p>____</p>
-<p>{text3}</p>
 <p>Больше статистических данных и полезной информации доступно на нашем сайте telemetr.me!</p>
     ''').format(text3=text3,analysys_completed=analysys_completed,real_people=real_people,real_percent= real_percent, fake=fake,fake_percent= 100 - real_percent,online_count=int(online_count),online_percent= online_count / analysys_completed * 100,
                 one_three_days=int(one_three_days), one_three_days_p=one_three_days / analysys_completed * 100,
