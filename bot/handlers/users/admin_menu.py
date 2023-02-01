@@ -28,7 +28,7 @@ async def _export_users(message: Message):
 @dp.message_handler(i18n_text='Export channels 📁', is_admin=True)
 @dp.message_handler(commands=['export_channels'], is_admin=True)
 async def _export_channels(message: Message):
-    count = Channel.select(fn.COUNT(Channel.id)).scalar()
+    count = Channel.select(fn.COUNT(Channel.name)).scalar()
 
     file_path = config.DIR / 'channels.csv'
     with open(file_path, 'w', encoding='UTF8', newline='') as f:
