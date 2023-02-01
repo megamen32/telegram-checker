@@ -168,7 +168,7 @@ async def render_text(analysys_completed, fake, more_than_month, one_three_days,
             _('{date}-{name}').format(date=datetime.datetime.now().strftime("%d/%m/%y"),name=chat.title),
         html_content = html_content,author_name='telemetr.me',author_url='https://telemetr.me')
 
-        text4='\n\nОтчет доступен по ссылке: {response}'.format(response=response['url'])
+        text4='\n\n'+_('Отчет доступен по ссылке: {response}').format(response=response['url'])
     else:
         text4 = _('''\n\n📢Онлайн: {online_count} ({online_percent:.2f}%)\n
     👥 Подписчики которые заходили в последний раз:

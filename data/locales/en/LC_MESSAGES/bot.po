@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bot VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2023-02-01 15:33+0300\n"
+"POT-Creation-Date: 2023-02-01 15:38+0300\n"
 "PO-Revision-Date: 2023-01-20 20:38+0300\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -131,6 +131,10 @@ msgstr ""
 
 #: bot/handlers/users/checker.py:168
 msgid "{date}-{name}"
+msgstr ""
+
+#: bot/handlers/users/checker.py:171
+msgid "Отчет доступен по ссылке: {response}"
 msgstr ""
 
 #: bot/handlers/users/checker.py:173
