@@ -138,6 +138,7 @@ async def render_text(analysys_completed, fake, more_than_month, one_three_days,
         👥 Подписчики: {real_people} ({real_percent:.2f}%)
         ♂️ боты: {fake} ({fake_percent:.2f}%)''').format(real_people=real_people,real_percent= real_percent, fake=fake,fake_percent= 100 - real_percent)
     if config('BOT_VARIANT',default=False,cast=bool):
+        text3='\n'
         me = await bot.get_me()
         html_content=_('''
 <p><strong>ВСЕГО ПРОВЕРЕНО: {analysys_completed}</strong></p>
