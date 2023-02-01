@@ -33,8 +33,12 @@ async def _export_channels(message: Message):
     file_path = config.DIR / 'channels.csv'
     with open(file_path, 'w', encoding='UTF8', newline='') as f:
         writer = csv.writer(f)
-
-        writer.writerow(['name', 'followers_count', 'link'])
+        headers = [x for x in Channel._meta.sorted_field_names]
+        writer.writerow(headers)
+        data=Channel.select().tuples()
+        # write data rows
+        for row in data:
+            writer.writerow(row)
         channels=list(Channel.select())
 
         for channel in channels:
