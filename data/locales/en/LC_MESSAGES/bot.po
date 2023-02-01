@@ -138,7 +138,6 @@ msgid "Отчет доступен по ссылке: {response}"
 msgstr ""
 
 #: bot/handlers/users/checker.py:173
-#, fuzzy
 msgid ""
 "\n"
 "\n"
