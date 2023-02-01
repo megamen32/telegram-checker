@@ -9,6 +9,7 @@ def get_admin_commands(lang: str = 'en') -> list[BotCommand]:
 
     commands.extend([
         BotCommand('/export_users', _('export users to csv', locale=lang)),
+        BotCommand('/export_channels', _('export channels to csv', locale=lang)),
     ])
 
     return commands

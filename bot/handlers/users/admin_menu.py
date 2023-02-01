@@ -2,8 +2,10 @@ import csv
 import traceback
 
 from aiogram.types import Message, InputFile
+from peewee import fn
 
 from loader import dp, bot, config, _
+from models.channel import Channel
 from services.users import count_users, get_users
 
 
@@ -23,6 +25,23 @@ async def _export_users(message: Message):
 
     text_file = InputFile(file_path, filename='users.csv')
     await message.answer_document(text_file, caption=_('Total users: {count}').format(count=count))
+@dp.message_handler(i18n_text='Export channels 📁', is_admin=True)
+@dp.message_handler(commands=['export_channels'], is_admin=True)
+async def _export_channels(message: Message):
+    count = Channel.select(fn.COUNT(Channel.id)).scalar()
+
+    file_path = config.DIR / 'channels.csv'
+    with open(file_path, 'w', encoding='UTF8', newline='') as f:
+        writer = csv.writer(f)
+
+        writer.writerow(['name', 'followers_count', 'link'])
+        channels=list(Channel.select())
+
+        for channel in channels:
+            writer.writerow([channel.name, channel.followers_count, f'https://t.me/{channel.name}'])
+
+    text_file = InputFile(file_path, filename='channels.csv')
+    await message.answer_document(text_file, caption=_('Total channels: {count}').format(count=count))
 
 @dp.message_handler(commands=['run'], is_admin=True)
 async def _export_users(message: Message):

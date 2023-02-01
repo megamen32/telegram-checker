@@ -10,6 +10,7 @@ def get_default_markup(user):
 
     if user.is_admin:
         markup.add(_('Export users 📁'))
+        markup.add(_('Export channels 📁'))
 
     if len(markup.keyboard) < 1:
         return ReplyKeyboardRemove()
