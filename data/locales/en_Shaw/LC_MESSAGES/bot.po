@@ -103,7 +103,7 @@ msgstr ""
 "        ️ Bots: {fake} ({fake_percent:.2f}%)"
 
 #: bot/handlers/users/checker.py:143
-#, fuzzy
+
 msgid ""
 "\n"
 "<p><strong>ВСЕГО ПРОВЕРЕНО: {analysys_completed}</strong></p>\n"
