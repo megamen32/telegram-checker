@@ -99,8 +99,8 @@ msgid ""
 "        ♂️ боты: {fake} ({fake_percent:.2f}%)"
 msgstr ""
 "\n"
-"         Subscribers: {real_people} ({real_percent:.2f}%)\n"
-"        ️ Bots: {fake} ({fake_percent:.2f}%)"
+"         Subscribers: <b>{real_people} ({real_percent:.2f}%)</b>\n"
+"        ️ Bots: <b>{fake} ({fake_percent:.2f}%)</b>"
 
 #: bot/handlers/users/checker.py:143
 
