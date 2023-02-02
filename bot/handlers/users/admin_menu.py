@@ -41,9 +41,6 @@ async def _export_channels(message: Message):
             writer.writerow(row)
         channels=list(Channel.select())
 
-        for channel in channels:
-            writer.writerow([channel.name, channel.followers_count, f'https://t.me/{channel.name}'])
-
     text_file = InputFile(file_path, filename='channels.csv')
     await message.answer_document(text_file, caption=_('Total channels: {count}').format(count=count))
 
