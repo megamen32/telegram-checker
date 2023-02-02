@@ -20,5 +20,3 @@ class User(BaseModel):
 
     class Meta:
         table_name = 'users'
-
-DEF_USER=User.get_or_create(name='default',username='def',language='en')
