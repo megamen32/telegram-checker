@@ -4,7 +4,6 @@ from peewee import BigIntegerField, CharField, BooleanField, DateTimeField, Inte
 
 from . import User
 from .base import BaseModel
-from .user import DEF_USER
 
 
 class Channel(BaseModel):
