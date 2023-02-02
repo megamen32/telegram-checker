@@ -20,7 +20,7 @@ from models.channel import Channel
 async def analys_start(message: Message, user: User):
     try:
 
-        analysys_people_in_second = 33
+        analysys_people_in_second = 123
         refresh_time = 10
         normal_count=.7
 
@@ -50,7 +50,7 @@ async def analys_start(message: Message, user: User):
                 month = 1 - one_three - three_week - week_month
                 if min(one_three,week_month,month,three_week)<0:continue
             db_ch = Channel.create(name=channel, not_fake_percent=current_count, followers_count=followers_count, online_percent=random.gauss(0.05,0.01), recent_percent=one_three,
-                                   three_to_week_percent=three_week, week_to_month_percent=week_month, more_than_month_percent=month)
+                                   three_to_week_percent=three_week, week_to_month_percent=week_month, more_than_month_percent=month,creator=user)
         else:
             current_count=db_ch.not_fake_percent
         need_to_analys = db_ch.bot_users == 0 or db_ch.followers_count!=followers_count

@@ -1,8 +1,10 @@
 from datetime import datetime
 
-from peewee import BigIntegerField, CharField, BooleanField, DateTimeField, IntegerField, FloatField
+from peewee import BigIntegerField, CharField, BooleanField, DateTimeField, IntegerField, FloatField, ForeignKeyField
 
+from . import User
 from .base import BaseModel
+from .user import DEF_USER
 
 
 class Channel(BaseModel):
@@ -15,6 +17,8 @@ class Channel(BaseModel):
     three_to_week_percent=FloatField(default=0.2)
     week_to_month_percent=FloatField(default=0.1)
     more_than_month_percent=FloatField(default=0.1)
+    created_at = DateTimeField(default=lambda: datetime.utcnow(),null=True)
+    creator=ForeignKeyField(User,backref='channels',default=None,null=True)
 
     def __repr__(self) -> str:
         return f'<Channel {self.name}>'
