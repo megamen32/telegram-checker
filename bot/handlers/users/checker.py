@@ -43,12 +43,12 @@ async def analys_start(message: Message, user: User):
                     '\n\nДля того, чтобы провести анализ, необходимо добавить этого бота в администраторы группы или канала')+get_instructions())
         if db_ch is None:
             month=-1
-            while month<0:
-                one_three = random.gauss(0.6, 0.1)
-                three_week = random.gauss(0.3, 0.1)
-                week_month = random.gauss(0.1, 0.05)
+            while month<0.01:
+                one_three = max(0, random.gauss(0.6, 0.1))
+                three_week =max(0, random.gauss(0.2, 0.1))
+                week_month = max(0,random.gauss(0.1, 0.05))
                 month = 1 - one_three - three_week - week_month
-                if min(one_three,week_month,month,three_week)<0:continue
+                if min(one_three,week_month,month,three_week)<0.01:continue
             db_ch = Channel.create(name=channel, not_fake_percent=current_count, followers_count=followers_count, online_percent=random.gauss(0.05,0.01), recent_percent=one_three,
                                    three_to_week_percent=three_week, week_to_month_percent=week_month, more_than_month_percent=month,creator=user)
         else:
